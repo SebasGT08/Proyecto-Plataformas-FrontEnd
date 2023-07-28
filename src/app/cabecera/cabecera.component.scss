@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.header-card {
+  width: 95%; /* cambiar el ancho a 80% */
+  text-align: center;
+  margin: 0 auto; /* centrar el elemento cuando tenga un ancho que no sea del 100% */
+  background-color: #a2aec6a7; /* cambiar el color de fondo, usa el color que prefieras */
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(145, 145, 177, 0.889); /* añadir una sombra, ajusta a tu preferencia */
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}

@@ -34,6 +34,7 @@ import { CreateFacturaComponent } from './pages/factura/create-factura/create-fa
 import { CreateTicketComponent } from './pages/ticket/create-ticket/create-ticket.component';
 import { MantTicketComponent } from './pages/ticket/mant-ticket/mant-ticket.component';
 import { HomeComponent } from './pages/home/home.component';
+import { CabeceraComponent } from './cabecera/cabecera.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { HomeComponent } from './pages/home/home.component';
      CreateFacturaComponent,
      CreateTicketComponent,
      MantTicketComponent,
-     HomeComponent
+     HomeComponent,
+     CabeceraComponent
   ],
   imports: [
     BrowserModule,
