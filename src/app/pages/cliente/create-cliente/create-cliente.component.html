@@ -1,3 +1,50 @@
 <app-menu></app-menu>
 <app-cabecera></app-cabecera>
-<p>create-cliente works!</p>
+
+<section>
+  <div class="form-box">
+    <div class="form-value">
+      <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+
+        <div class="contenedor-titulo">
+          <br>
+          <h2>Registrar Cliente</h2>
+          <br>
+        </div>
+
+        <div class="inputbox">
+          <i class="fas fa-id-card"></i>
+          <input type="text" [(ngModel)]="persona.cedula" name="cedula" required #cedula="ngModel">
+          <label for="">Cédula</label>
+        </div>
+
+        <div class="inputbox" [class.ng-invalid]="nombre.invalid && (nombre.dirty || nombre.touched)">
+          <i class="fas fa-user"></i>
+          <input type="text" [(ngModel)]="persona.nombre" name="nombre" required #nombre="ngModel">
+          <label for="">Nombre</label>
+        </div>
+
+        <div class="inputbox" [class.ng-invalid]="telefono.invalid && (telefono.dirty || telefono.touched)">
+          <i class="fas fa-phone"></i>
+          <input type="text" [(ngModel)]="persona.telefono" name="telefono" required #telefono="ngModel">
+          <label for="">Teléfono</label>
+        </div>
+
+        <div class="inputbox" [class.ng-invalid]="direccion.invalid && (direccion.dirty || direccion.touched)">
+          <i class="fas fa-home"></i>
+          <input type="text" [(ngModel)]="persona.direccion" name="direccion" required #direccion="ngModel">
+          <label for="">Dirección</label>
+        </div>
+
+        <div class="inputbox" [class.ng-invalid]="correo.invalid && (correo.dirty || correo.touched)">
+          <i class="fas fa-envelope"></i>
+          <input type="text" [(ngModel)]="persona.correo" name="correo" required #correo="ngModel">
+          <label for="">Correo</label>
+        </div>
+
+        <button mat-raised-button color="primary" class="full-width-button" type="submit" [disabled]="!registerForm.valid">Registrar</button>
+
+      </form>
+    </div>
+  </div>
+</section>
