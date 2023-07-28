@@ -1,0 +1,24 @@
+<div class="page-container">
+  <div class="login-container">
+    <mat-card-content>
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="full-width-input" appearance="fill">
+          <mat-label>Usuario</mat-label>
+          <input matInput type="text" [(ngModel)]="model.username" name="username" required>
+        </mat-form-field>
+
+        <mat-form-field class="full-width-input" appearance="fill">
+          <mat-label>Contraseña</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="model.password" name="password" required>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-card-actions>
+          <button mat-raised-button color="primary" class="full-width-button" [disabled]="!loginForm.form.valid" type="submit">Ingresar</button>
+        </mat-card-actions>
+      </form>
+    </mat-card-content>
+  </div>
+</div>

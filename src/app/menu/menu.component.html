@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+  <button mat-button [matMenuTriggerFor]="menu">Usuarios</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/create-empleado">Crear Empleado</button>
+    <button mat-menu-item routerLink="/create-usuario">Crear Usuarios</button>
+    <button mat-menu-item routerLink="/mant-empleado">Mantenimiento Empleados</button>
+    <button mat-menu-item routerLink="/mant-usuario">Mantenimiento Usuarios</button>
+  </mat-menu>
+
+</mat-toolbar>

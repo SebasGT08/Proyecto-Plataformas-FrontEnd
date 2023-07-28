@@ -1,0 +1,26 @@
+/* login.component.css */
+.page-container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la ventana */
+}
+
+
+.login-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 1px 2px 5px rgba(31, 34, 107, 0.381);
+}
+
+.full-width-input {
+  width: 100%;
+}
+
+.full-width-button {
+  width: 100%;
+  margin-top: 20px;
+}
