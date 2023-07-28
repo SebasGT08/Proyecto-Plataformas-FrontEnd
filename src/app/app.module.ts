@@ -11,6 +11,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 
+
+
 //Paginas
 import { CreateEmpleadoComponent } from './pages/empleado/create-empleado/create-empleado.component';
 import { CreateUsuarioComponent } from './pages/usuario/create-usuario/create-usuario.component';
@@ -27,6 +29,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CreateClienteComponent } from './pages/cliente/create-cliente/create-cliente.component';
 import { MantClienteComponent } from './pages/cliente/mant-cliente/mant-cliente.component';
+import { MantFacturaComponent } from './pages/factura/mant-factura/mant-factura.component';
+import { CreateFacturaComponent } from './pages/factura/create-factura/create-factura.component';
+import { CreateTicketComponent } from './pages/ticket/create-ticket/create-ticket.component';
+import { MantTicketComponent } from './pages/ticket/mant-ticket/mant-ticket.component';
+import { HomeComponent } from './pages/home/home.component';
 
 
 @NgModule({
@@ -40,7 +47,12 @@ import { MantClienteComponent } from './pages/cliente/mant-cliente/mant-cliente.
      MantUsuarioComponent,
      LoginComponent,
      CreateClienteComponent,
-     MantClienteComponent
+     MantClienteComponent,
+     MantFacturaComponent,
+     CreateFacturaComponent,
+     CreateTicketComponent,
+     MantTicketComponent,
+     HomeComponent
   ],
   imports: [
     BrowserModule,

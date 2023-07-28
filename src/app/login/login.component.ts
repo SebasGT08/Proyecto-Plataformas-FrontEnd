@@ -25,7 +25,7 @@ export class LoginComponent {
     this.authenticationService.login(this.model.username, this.model.password)
       .subscribe(
         data => {
-          this.router.navigate(['create-usuario']);
+          this.router.navigate(['home']);
         },
         error => {
           // Aquí se manejará el error.

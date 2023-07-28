@@ -1,0 +1,26 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.cobrar-color {
+  background-color: rgba(6, 214, 6, 0.697);
+  color: white;
+  margin: 20px;
+}
+
+.ingreso-color {
+  background-color: rgba(131, 131, 252, 0.782);
+  color: white;
+}
+
+.separator {
+  border-right: 2px solid #ccc;
+  margin: 0 15px;
+  height: 80%;
+  align-self: center;
+}
+
+.hover-grow:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s;
+}
