@@ -36,7 +36,9 @@ import { MantTicketComponent } from './pages/ticket/mant-ticket/mant-ticket.comp
 import { HomeComponent } from './pages/home/home.component';
 import { CabeceraComponent } from './cabecera/cabecera.component';
 
+//Crear
 
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +64,8 @@ import { CabeceraComponent } from './cabecera/cabecera.component';
     FormsModule,
     BrowserAnimationsModule,
     MatToolbarModule,MatMenuModule,MatButtonModule,
-    MatCardModule,MatInputModule,MatFormFieldModule,MatIconModule,HttpClientModule
+    MatCardModule,MatInputModule,MatFormFieldModule,MatIconModule,HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

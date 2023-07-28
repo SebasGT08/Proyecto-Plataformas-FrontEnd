@@ -2,7 +2,7 @@
 
 <app-cabecera></app-cabecera>
 
-<div class="page-container">
+<!-- <div class="page-container">
   <div class="login-container">
     <mat-card-content>
       <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
@@ -25,4 +25,28 @@
       </form>
     </mat-card-content>
   </div>
-</div>
+</div> -->
+
+<section>
+  <div class="form-box">
+    <div class="form-value">
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+        <h2>Iniciar Sesion</h2>
+        <div class="inputbox">
+          <i class="fas fa-user"></i>
+          <input type="text" [(ngModel)]="model.username" name="username" required>
+          <label for="">Usuario</label>
+        </div>
+        <div class="inputbox">
+          <i class="fas fa-lock"></i>
+          <input [type]="hide ? 'password' : 'text'" [(ngModel)]="model.password" name="password" required>
+          <label for="">Contraseña</label>
+        </div>
+        <button mat-raised-button color="primary" class="full-width-button" type="submit">Ingresar</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+
