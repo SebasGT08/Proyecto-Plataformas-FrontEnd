@@ -1,3 +1,4 @@
+import { AuthGuardService } from './services/auth-guard.service';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -15,11 +16,11 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   //Usuario
-  {path: 'create-usuario',component: CreateUsuarioComponent},
-  {path: 'mant-usuario',component: MantUsuarioComponent},
+  {path: 'create-usuario',component: CreateUsuarioComponent,canActivate: [AuthGuardService]},
+  {path: 'mant-usuario',component: MantUsuarioComponent,canActivate: [AuthGuardService]},
   //Empleado
-  {path: 'create-empleado',component: CreateEmpleadoComponent},
-  {path: 'mant-empleado',component: MantEmpleadoComponent},
+  {path: 'create-empleado',component: CreateEmpleadoComponent,canActivate: [AuthGuardService]},
+  {path: 'mant-empleado',component: MantEmpleadoComponent,canActivate: [AuthGuardService]},
 ];
 
 @NgModule({

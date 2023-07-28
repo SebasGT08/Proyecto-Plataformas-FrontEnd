@@ -25,6 +25,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { CreateClienteComponent } from './pages/cliente/create-cliente/create-cliente.component';
+import { MantClienteComponent } from './pages/cliente/mant-cliente/mant-cliente.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { FormsModule } from '@angular/forms';
      CreateUsuarioComponent,
      MantEmpleadoComponent,
      MantUsuarioComponent,
-     LoginComponent
+     LoginComponent,
+     CreateClienteComponent,
+     MantClienteComponent
   ],
   imports: [
     BrowserModule,
