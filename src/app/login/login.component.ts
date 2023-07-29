@@ -30,6 +30,7 @@ export class LoginComponent {
         error => {
           // Aquí se manejará el error.
           console.error('Error de inicio de sesión:', error);
+          this.authenticationService.logout();
         }
       );
   }

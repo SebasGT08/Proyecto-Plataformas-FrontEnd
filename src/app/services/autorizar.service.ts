@@ -43,6 +43,7 @@ export class AutorizarService {
         }),
         catchError(error => {
           // Capturando errores HTTP
+          this.logout();
           if (error.status === 400) {
             this.snackBar.open('Error al iniciar sesión: Credenciales de inicio de sesión inválidas.', 'Cerrar', { duration: 5000 });
           }
