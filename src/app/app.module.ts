@@ -39,6 +39,8 @@ import { CabeceraComponent } from './cabecera/cabecera.component';
 //Crear
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +66,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     BrowserAnimationsModule,
     MatToolbarModule,MatMenuModule,MatButtonModule,
-    MatCardModule,MatInputModule,MatFormFieldModule,MatIconModule,HttpClientModule,
+    MatCardModule,MatInputModule,MatFormFieldModule,MatIconModule,HttpClientModule, MatSnackBarModule,
     ReactiveFormsModule
   ],
   providers: [],
