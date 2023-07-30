@@ -44,6 +44,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 //Mantenimiento
 import { MatTableModule } from '@angular/material/table';
 import { EditEmpleadoComponent } from './pages/empleado/edit-empleado/edit-empleado.component';
+import { InfoEmpresaComponent } from './info/info-empresa/info-empresa.component';
+import { InfoTarifaComponent } from './info/info-tarifa/info-tarifa.component';
+import { InfoLugarComponent } from './info/info-lugar/info-lugar.component';
+
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -63,7 +68,10 @@ import { EditEmpleadoComponent } from './pages/empleado/edit-empleado/edit-emple
      MantTicketComponent,
      HomeComponent,
      CabeceraComponent,
-     EditEmpleadoComponent
+     EditEmpleadoComponent,
+     InfoEmpresaComponent,
+     InfoTarifaComponent,
+     InfoLugarComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +81,7 @@ import { EditEmpleadoComponent } from './pages/empleado/edit-empleado/edit-emple
     MatToolbarModule,MatMenuModule,MatButtonModule,
     MatCardModule,MatInputModule,MatFormFieldModule,MatIconModule,HttpClientModule, MatSnackBarModule,
     ReactiveFormsModule,
-    MatTableModule
+    MatTableModule,FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,145 @@
+<div class="container">
+  <h1 class="title">Bienvenido</h1>
+
+  <h2 class="sub-title">Información General:</h2>
+  <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-around center">
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-icon>person</mat-icon>
+        <mat-card-title>Usuario</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+
+        <p>{{usuario}}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-icon>calendar_today</mat-icon>
+        <mat-card-title>Fecha</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{fecha | date:'yyyy-MM-dd'}}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-icon>access_time</mat-icon>
+        <mat-card-title>Hora</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{fecha | date:'HH:mm:ss'}}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <br>
+
+  <h2 class="sub-title">Info Actual:</h2>
+  <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-around center">
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-icon>directions_car</mat-icon>
+        <mat-card-title>Carros Actuales</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{carrosEstacionados}}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-icon>two_wheeler</mat-icon>
+        <mat-card-title>Motos Actuales</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{motosEstacionadas}}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-icon>local_shipping</mat-icon>
+        <mat-card-title>Camiones Actuales</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{camionesEstacionados}}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <br>
+  <h2 class="sub-title">Info del dia:</h2>
+  <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-around center">
+
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-icon>add_location_icon</mat-icon>
+        <mat-card-title>Total Vehiculos</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{tiempoPromedio}}</p>
+      </mat-card-content>
+    </mat-card>
+
+
+
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-icon>attach_money</mat-icon>
+        <mat-card-title>Total Ganancias</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{(gananciasCarros) + (gananciasMotos) + (gananciasCamiones)}}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-icon>timer</mat-icon>
+        <mat-card-title>Tiempo Promedio</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{tiempoPromedio}} minutos</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <br>
+
+
+  <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-around center">
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-icon>directions_car</mat-icon>
+        <mat-card-title>Valor en Carros</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{gananciasCarros}}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-icon>two_wheeler</mat-icon>
+        <mat-card-title>Valor en Motos</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{gananciasMotos}}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-icon>local_shipping</mat-icon>
+        <mat-card-title>Valor en Camiones</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{gananciasCamiones}}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+
+</div>
