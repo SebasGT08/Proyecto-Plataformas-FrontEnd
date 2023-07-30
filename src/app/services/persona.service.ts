@@ -15,16 +15,15 @@ export class PersonaService {
   }
 
   getAll(){
-    return this.http.get<any>("http://localhost:8080/Practica_web/rs/clientes/clientesListar/")
+    return this.http.get<any>("http://localhost:8080/Proyecto-Plataformas/rs/Personas/all")
   }
 
   eliminar(persona: Persona){
-    return this.http.delete<any>("http://localhost:8080/Practica_web/rs/clientes/", { body: persona });
+    return this.http.delete<any>("http://localhost:8080/Proyecto-Plataformas/rs/Personas/eliminar", { body: persona });
   }
 
   actualizar(persona: Persona){
-    return this.http.put<any>("http://localhost:8080/Practica_web/rs/clientes/", persona);
+    return this.http.put<any>("http://localhost:8080/Proyecto-Plataformas/rs/Personas/actualizar", persona);
   }
-
 
 }

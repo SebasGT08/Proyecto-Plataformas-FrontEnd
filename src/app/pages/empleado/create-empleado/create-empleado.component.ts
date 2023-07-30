@@ -44,7 +44,7 @@ export class CreateEmpleadoComponent implements OnInit{
           this._snackBar.open('Empleado creado con éxito', 'Cerrar', {
             duration: 2000,
           });
-          this.persona = { cedula: '',nombre: '',telefono: '',direccion: '',correo: '',tipo: 'C' };
+          this.persona = { cedula: '',nombre: '',telefono: '',direccion: '',correo: '',tipo: 'E' };
           //this.router.navigate(['list-persona']);
         }
       },

@@ -1,0 +1,50 @@
+/* Centrar el título en el toolbar */
+.box1.center-title h2 {
+  text-align: center;
+  color: white; /* Cambia el color según tu preferencia */
+  margin: 0;
+  padding: 0;
+
+}
+
+
+.center-title{
+  text-align: center;
+  justify-content: center;
+  width: 50%;
+  border-radius: 10px;
+}
+/* Centrar el texto de advertencia cuando no hay personas */
+.center-title p {
+  text-align: center;
+  color: white; /* Cambia el color según tu preferencia */
+}
+/* Estilo para la tabla */
+table {
+  border-collapse: collapse;
+}
+
+/* Estilo para las celdas del encabezado de la tabla */
+table th {
+  background-color: #14141596; /* Cambia el color según tu preferencia */
+  color: #ffffff; /* Cambia el color según tu preferencia */
+  padding: 10px;
+  text-align: center;
+}
+
+/* Estilo para las celdas de la tabla */
+table td {
+  padding: 10px;
+  text-align: center;
+}
+
+/* Estilo para los botones de la tabla */
+table td button {
+  margin-right: 10px; /* Espacio entre los botones */
+}
+
+.contenedor1{
+  display: flex;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+}

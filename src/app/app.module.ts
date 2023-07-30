@@ -41,6 +41,10 @@ import { CabeceraComponent } from './cabecera/cabecera.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
+//Mantenimiento
+import { MatTableModule } from '@angular/material/table';
+import { EditEmpleadoComponent } from './pages/empleado/edit-empleado/edit-empleado.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +62,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
      CreateTicketComponent,
      MantTicketComponent,
      HomeComponent,
-     CabeceraComponent
+     CabeceraComponent,
+     EditEmpleadoComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +72,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     BrowserAnimationsModule,
     MatToolbarModule,MatMenuModule,MatButtonModule,
     MatCardModule,MatInputModule,MatFormFieldModule,MatIconModule,HttpClientModule, MatSnackBarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
