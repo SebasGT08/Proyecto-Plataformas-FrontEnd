@@ -1,0 +1,41 @@
+.container {
+ margin-top: 4px;
+  background: transparent;
+  backdrop-filter: blur(15px);
+  padding: 20px;
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: 20px;
+}
+
+.title{
+
+  color: white;
+  padding: 10px;
+}
+.title {
+  background-color: #3f51b5;
+  font-weight: 700;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 0px 1px 6px rgb(36, 51, 170);
+}
+
+
+table th {
+  background-color: #14141596; /* Cambia el color según tu preferencia */
+  color: #ffffff; /* Cambia el color según tu preferencia */
+  //padding: 10px;
+  text-align: center;
+
+}
+
+table td {
+
+  padding: 10px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+

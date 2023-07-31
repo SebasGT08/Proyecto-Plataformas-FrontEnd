@@ -1,1 +1,43 @@
-<p>info-tarifa works!</p>
+
+<div class="container">
+  <h1 class="title">Tarifas</h1>
+
+
+  <table mat-table [dataSource]="listadoTarifasWS" class="mat-elevation-z8">
+    <!-- Tipo Column -->
+    <ng-container matColumnDef="tipo">
+      <th mat-header-cell *matHeaderCellDef> Tipo de Vehiculo </th>
+      <td mat-cell *matCellDef="let tarifa"> {{tarifa.tipoVehiculo}} </td>
+    </ng-container>
+
+    <!-- Precio Column -->
+    <ng-container matColumnDef="precio">
+      <th mat-header-cell *matHeaderCellDef> Precio </th>
+      <td mat-cell *matCellDef="let tarifa; let i = index">
+        <div *ngIf="edicionIndex !== i; else editarPrecio">
+          {{tarifa.costoTarifa}}
+        </div>
+
+        <ng-template #editarPrecio>
+          <mat-form-field>
+            <input matInput [(ngModel)]="precioEdicion">
+          </mat-form-field>
+        </ng-template>
+      </td>
+    </ng-container>
+
+    <!-- Acciones Column -->
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let tarifa; let i = index">
+        <button mat-button color="primary" *ngIf="edicionIndex !== i" (click)="iniciarEdicion(i)">Editar</button>
+        <button mat-button color="warn" *ngIf="edicionIndex === i" (click)="guardarEdicion(i)">Guardar</button>
+        <button mat-button color="warn" *ngIf="edicionIndex === i" (click)="cancelarEdicion()">Cancelar</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+</div>

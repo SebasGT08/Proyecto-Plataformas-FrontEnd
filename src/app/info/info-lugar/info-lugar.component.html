@@ -1,1 +1,42 @@
-<p>info-lugar works!</p>
+<div class="container">
+  <h1 class="title">Disponibilidad</h1>
+
+  <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-around center">
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-icon>directions_car</mat-icon>
+        <mat-card-title>Espacios Disponibles Carros</mat-card-title>
+      </mat-card-header>
+      <mat-card-content [ngClass]="{'no-disponible': lugar_carros == 0}">
+        <p>{{lugar_carros}}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <br>
+  <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-around center">
+
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-icon>two_wheeler</mat-icon>
+        <mat-card-title>Espacios Disponibles Motos</mat-card-title>
+      </mat-card-header>
+      <mat-card-content [ngClass]="{'no-disponible': lugar_motos == 0}">
+        <p>{{lugar_motos}}</p>
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+  <br>
+
+  <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-around center">
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-icon>local_shipping</mat-icon>
+        <mat-card-title>Espacios Disponibles Camiones</mat-card-title>
+      </mat-card-header>
+      <mat-card-content [ngClass]="{'no-disponible': lugar_camiones == 0}">
+        <p>{{lugar_camiones}}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
