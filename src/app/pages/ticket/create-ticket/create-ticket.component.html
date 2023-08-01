@@ -25,10 +25,11 @@
             <div class="inputbox" [class.ng-invalid]="tipoVehiculo.invalid && (tipoVehiculo.dirty || tipoVehiculo.touched)">
               <i class="fas fa-car-side"></i>
               <label for="">Tipo de Vehículo</label>
-              <mat-select class="mat-select-style my-custom-mat-select" [(ngModel)]="vehiculo.tipoVehiculo" name="tipoVehiculo" required #tipoVehiculo="ngModel" (selectionChange)="onTipoVehiculoChange($event.value)">
+              <mat-select class="mat-select-style my-custom-mat-select" [(ngModel)]="vehiculo.tipoVehiculo" name="tipoVehiculo" required #tipoVehiculo="ngModel" (selectionChange)="onTipoVehiculoChange($event.value)" [disabled]="vehicleSelected">
                 <mat-option *ngFor="let option of tiposVehiculo" [value]="option">{{option}}</mat-option>
               </mat-select>
             </div>
+
 
             <div class="inputbox" [class.ng-invalid]="costoTarifa.invalid && (costoTarifa.dirty || costoTarifa.touched)">
               <i class="fas fa-dollar-sign"></i>
@@ -61,7 +62,7 @@
 
             <div class="inputbox">
               <i class="fas fa-user"></i>
-              <input type="text" [(ngModel)]="usuario" name="usuario" disabled>
+              <input type="text" [(ngModel)]="usuarioSt" name="usuario" disabled>
               <label for="">Usuario</label>
             </div>
 

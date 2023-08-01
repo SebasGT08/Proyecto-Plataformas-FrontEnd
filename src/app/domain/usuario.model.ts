@@ -2,6 +2,6 @@ export interface Usuario {
   id?: number;
   persona_id: number;
   cargo?: string;
-  user?: string;
+  usuario?: string;
   contrasenia?: string;
 }

@@ -8,6 +8,10 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { Lugar } from 'src/app/domain/lugar.model';
 import { LugarService } from 'src/app/services/lugar.service';
 import { DatePipe } from '@angular/common';
+import { Usuario } from 'src/app/domain/usuario.model';
+import { TicketService } from '../../../services/ticket.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-create-ticket',
@@ -22,6 +26,7 @@ export class CreateTicketComponent implements OnInit {
   placas: Vehiculo[] = [];
   tiposVehiculo: string[] = [];
   hasSelection = false;
+  vehicleSelected = false;
 
   lugares: Lugar[] = [];
   lugar: Lugar = {};
@@ -32,14 +37,17 @@ export class CreateTicketComponent implements OnInit {
 
 
 
-  usuario: string | undefined;
+  usuarioSt: string | undefined;
+  usuario: Usuario | undefined;
 
 
   constructor(
     private vehiculoService: VehiculoService,
     private tarifaService: TarifaService,
     private lugarService: LugarService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private ticketService: TicketService,
+    private _snackBar: MatSnackBar
   ) {
 
   }
@@ -69,8 +77,9 @@ export class CreateTicketComponent implements OnInit {
 
     if (userObject) {
       let userData = JSON.parse(userObject);
+      this.usuario=userData;
       let usuarioReg = userData.usuario;
-       this.usuario=usuarioReg;
+       this.usuarioSt=usuarioReg;
     }
   }
 
@@ -81,6 +90,7 @@ export class CreateTicketComponent implements OnInit {
   }
 
   onOptionSelected(event: MatAutocompleteSelectedEvent) {
+    this.vehicleSelected = true;
     const selectedVehicle = this.placas.find(vehicle => vehicle.placa === event.option.value);
     if (selectedVehicle) {
       this.vehiculo.tipoVehiculo = selectedVehicle.tipoVehiculo;
@@ -124,6 +134,9 @@ export class CreateTicketComponent implements OnInit {
     }
   }
 
+  placaExists(placa: string): boolean {
+    return this.placas.some(vehicle => vehicle.placa === placa);
+  }
 
   onSubmit(registerForm: { valid: any; }) {
     if (!registerForm.valid) {
@@ -131,25 +144,71 @@ export class CreateTicketComponent implements OnInit {
       return;
     }
 
-    // this.personaService.save(this.persona).subscribe(
-    //   response => {
-    //     if (response.codigo) { // si response.codigo existe, hay un error
-    //       this._snackBar.open(`Error al crear empleado: ${response.mensaje}`, 'Cerrar', {
-    //         duration: 2000,
-    //       });
-    //     } else {
-    //       this._snackBar.open('Empleado creado con éxito', 'Cerrar', {
-    //         duration: 2000,
-    //       });
-    //       this.persona = { cedula: '',nombre: '',telefono: '',direccion: '',correo: '',tipo: 'E' };
-    //       //this.router.navigate(['list-persona']);
-    //     }
-    //   },
-    //   error => {
-    //     this._snackBar.open(`Error al crear empleado: ${error}`, 'Cerrar', {
-    //       duration: 2000,
-    //     });
-    //   }
-    // );
+    // Si el vehículo no ha sido seleccionado de la lista, entonces guardarlo
+  if (!this.placaExists(this.vehiculo.placa!)) {
+    this.vehiculoService.save(this.vehiculo).subscribe(
+      response => {
+        console.log('Vehículo guardado con éxito');
+        this.vehiculo.vehiculoId=response.vehiculoId
+        this.saveTicket();
+      },
+      error => {
+        this._snackBar.open(`Error al crear Vehiculo: ${error.error}`, 'Cerrar', {
+          duration: 5000,
+        });
+        return;
+      }
+    );
+  }else{
+    this.saveTicket();
   }
+
+  }
+  saveTicket() {
+    this.ticket ={
+      fecha: this.fechaActual,
+      hora_entrada: this.horaActual,
+      hora_salida: this.horaActual,
+      usuario:this.usuario,
+      tarifa: this.tarifa,
+      lugar: this.lugar,
+      vehiculo: this.vehiculo
+    }
+
+    console.log(this.ticket);
+
+
+    this.ticketService.save(this.ticket).subscribe(
+      response => {
+
+          this._snackBar.open('Ticket creado con éxito', 'Cerrar', {
+            duration: 5000,
+          });
+
+          this.cambiarEstado();
+         // this.ticket = { cedula: '',nombre: '',telefono: '',direccion: '',correo: '',tipo: 'E' };
+          //this.router.navigate(['list-persona']);
+      },
+      error => {
+        this._snackBar.open(`Error al crear Ticket: ${error.error}`, 'Cerrar', {
+          duration: 5000,
+        });
+      }
+    );
+}
+
+cambiarEstado(){
+  this.lugar.estado="I";
+  this.lugarService.actualizar(this.lugar).subscribe(
+    response => {
+      console.log('Lugar actuualizado con éxito');
+    },
+    error => {
+      this._snackBar.open(`Error al crear Acualizar Estado de Lugar: ${error.error}`, 'Cerrar', {
+        duration: 5000,
+      });
+      return;
+    }
+  );
+}
 }
