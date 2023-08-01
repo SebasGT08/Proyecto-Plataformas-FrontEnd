@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./info-empresa.component.scss']
 })
 export class InfoEmpresaComponent implements OnInit {
-  usuario = "Juan";
+  usuario = '';
   fecha = new Date();
   gananciasCarros: number = 0;
   gananciasMotos: number = 0;
@@ -29,6 +29,14 @@ export class InfoEmpresaComponent implements OnInit {
     this.motosEstacionadas = this.obtenerMotosEstacionadas();
     this.camionesEstacionados = this.obtenerCamionesEstacionados();
     this.tiempoPromedio = this.obtenerTiempoPromedio();
+
+    let userObject = localStorage.getItem('currentUser');
+
+    if (userObject) {
+      let userData = JSON.parse(userObject);
+      let usuarioReg = userData.usuario;
+       this.usuario=usuarioReg;
+    }
   }
 
   obtenerGananciasCarros(): number {

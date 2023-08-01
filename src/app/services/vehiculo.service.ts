@@ -26,4 +26,5 @@ export class VehiculoService {
   actualizar(vehiculo: Vehiculo){
     return this.http.put<any>("http://localhost:8080/Proyecto-Plataformas/rs/Vehiculos/actualizar", vehiculo);
   }
+
 }

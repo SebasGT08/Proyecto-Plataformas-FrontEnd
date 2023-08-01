@@ -51,6 +51,7 @@ import { InfoLugarComponent } from './info/info-lugar/info-lugar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSelectModule} from '@angular/material/select';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,7 @@ import {MatSelectModule} from '@angular/material/select';
     ReactiveFormsModule,
     MatTableModule,FlexLayoutModule,MatAutocompleteModule,MatSelectModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
