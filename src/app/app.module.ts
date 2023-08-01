@@ -51,11 +51,7 @@ import { InfoLugarComponent } from './info/info-lugar/info-lugar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSelectModule} from '@angular/material/select';
-<<<<<<< HEAD
 
-=======
-
->>>>>>> cfa077dab8d5ec391aa646a0f377e5687f64dbb8
 
 import { EditClienteComponent } from './pages/cliente/edit-cliente/edit-cliente.component';
 import { DatePipe } from '@angular/common';
