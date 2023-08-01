@@ -1,3 +1,53 @@
 <app-menu></app-menu>
 <app-cabecera></app-cabecera>
-<p>create-ticket works!</p>
+
+
+<div class="contenedor">
+
+  <div class="info">
+
+    <section>
+      <div class="form-box">
+        <div class="form-value">
+          <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+
+            <!-- Resto del formulario -->
+
+            <div class="inputbox" [class.ng-invalid]="placa.invalid && (placa.dirty || placa.touched)">
+              <i class="fas fa-car"></i>
+              <input type="text" [(ngModel)]="vehiculo.placa" name="placa" required #placa="ngModel" [matAutocomplete]="auto">
+
+              <label for="">Placa</label>
+              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
+
+                <mat-option *ngFor="let option of placas" [value]="option.placa">{{option.placa}}</mat-option>
+              </mat-autocomplete>
+            </div>
+
+            <div class="inputbox" [class.ng-invalid]="tipoVehiculo.invalid && (tipoVehiculo.dirty || tipoVehiculo.touched)">
+              <i class="fas fa-car-side"></i>
+              <label for="">Tipo de Vehículo</label>
+              <mat-select class="mat-select-style my-custom-mat-select" [(ngModel)]="vehiculo.tipoVehiculo" name="tipoVehiculo" required #tipoVehiculo="ngModel">
+                <mat-option *ngFor="let option of tiposVehiculo" [value]="option">{{option}}</mat-option>
+              </mat-select>
+
+            </div>
+
+
+
+            <button mat-raised-button color="primary" class="full-width-button" type="submit" [disabled]="!registerForm.valid">Registrar</button>
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="contenedor-derecho">
+    <app-info-lugar></app-info-lugar>
+    <app-info-tarifa></app-info-tarifa>
+  </div>
+</div>
+
+

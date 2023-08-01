@@ -20,7 +20,7 @@ export class InfoLugarComponent implements OnInit{
 
   obtenerDisponibilidadCarros(): number {
     // Aquí es donde obtendrías las disponibilidad de los carros desde tu servicio
-    return 0;
+    return 1;
   }
 
   obtenerDisponibilidadsMotos(): number {

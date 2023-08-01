@@ -49,6 +49,8 @@ import { InfoTarifaComponent } from './info/info-tarifa/info-tarifa.component';
 import { InfoLugarComponent } from './info/info-lugar/info-lugar.component';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -81,7 +83,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatToolbarModule,MatMenuModule,MatButtonModule,
     MatCardModule,MatInputModule,MatFormFieldModule,MatIconModule,HttpClientModule, MatSnackBarModule,
     ReactiveFormsModule,
-    MatTableModule,FlexLayoutModule
+    MatTableModule,FlexLayoutModule,MatAutocompleteModule,MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
