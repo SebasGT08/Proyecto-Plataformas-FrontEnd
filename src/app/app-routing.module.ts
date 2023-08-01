@@ -30,6 +30,7 @@ import { MantTicketComponent } from './pages/ticket/mant-ticket/mant-ticket.comp
 //Componentes Home
 import { HomeComponent } from './pages/home/home.component';
 import { EditEmpleadoComponent } from './pages/empleado/edit-empleado/edit-empleado.component';
+import { EditClienteComponent } from './pages/cliente/edit-cliente/edit-cliente.component';
 
 const routes: Routes = [
   //Login
@@ -45,6 +46,8 @@ const routes: Routes = [
   //Cliente
   {path: 'create-cliente',component: CreateClienteComponent,canActivate: [AuthGuardService]},
   {path: 'mant-cliente',component: MantClienteComponent,canActivate: [AuthGuardService]},
+  {path: 'edit-cliente',component: EditClienteComponent,canActivate: [AuthGuardService]},
+
   //Factura
   {path: 'create-factura',component: CreateFacturaComponent,canActivate: [AuthGuardService]},
   {path: 'mant-factura',component: MantFacturaComponent,canActivate: [AuthGuardService]},
