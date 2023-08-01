@@ -26,14 +26,16 @@ export class MantEmpleadoComponent implements OnInit{
   getPersonas(): void {
     this.personaService.getAll().subscribe(
       (response) => {
-        this.listadoPersonasWS = response;
-        console.log('Listado de personas:', this.listadoPersonasWS);
+        // Filtrar las personas por tipo "C" (clientes)
+        this.listadoPersonasWS = response.filter((persona: Persona) => persona.tipo === 'E');
+        console.log('Listado de personas (Clientes):', this.listadoPersonasWS);
       },
       (error) => {
         console.error('Error al obtener la lista de personas:', error);
       }
     );
   }
+  
 
 
   eliminar(persona: Persona) {
