@@ -51,6 +51,7 @@ import { InfoLugarComponent } from './info/info-lugar/info-lugar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSelectModule} from '@angular/material/select';
+import { EditClienteComponent } from './pages/cliente/edit-cliente/edit-cliente.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import {MatSelectModule} from '@angular/material/select';
      EditEmpleadoComponent,
      InfoEmpresaComponent,
      InfoTarifaComponent,
-     InfoLugarComponent
+     InfoLugarComponent,
+     EditClienteComponent
   ],
   imports: [
     BrowserModule,
