@@ -62,20 +62,7 @@ export class InfoEmpresaComponent implements OnInit {
   }
 
 
-  obtenerGananciasCarros(): number {
-    // Aquí es donde obtendrías las ganancias de los carros desde tu servicio
-    return 0;
-  }
 
-  obtenerGananciasMotos(): number {
-    // Aquí es donde obtendrías las ganancias de las motos desde tu servicio
-    return 0;
-  }
-
-  obtenerGananciasCamiones(): number {
-    // Aquí es donde obtendrías las ganancias de los camiones desde tu servicio
-    return 0;
-  }
 
   obtenerCarrosEstacionados(): number {
 
@@ -132,5 +119,17 @@ export class InfoEmpresaComponent implements OnInit {
     let diaFormato = dia < 10 ? '0' + dia : '' + dia;
 
     return `${anio}-${mesFormato}-${diaFormato}`;
+  }
+
+  obtenerGananciasCarros(): number {
+    return 0;
+  }
+
+  obtenerGananciasMotos(): number {
+    return 0;
+  }
+
+  obtenerGananciasCamiones(): number {
+    return 0;
   }
 }

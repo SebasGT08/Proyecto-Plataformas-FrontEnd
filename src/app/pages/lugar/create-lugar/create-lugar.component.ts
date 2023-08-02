@@ -33,20 +33,22 @@ export class CreateLugarComponent implements OnInit {
 
     this.lugarService.save(this.lugar).subscribe(
       response => {
+        console.log(response);
+
         if (response.codigo) {
           this._snackBar.open(`Error al registrar lugar: ${response.mensaje}`, 'Cerrar', {
-            duration: 2000,
+            duration: 5000,
           });
         } else {
           this._snackBar.open('Lugar registrado con éxito', 'Cerrar', {
-            duration: 2000,
+            duration: 5000,
           });
-          
+
         }
       },
       error => {
-        this._snackBar.open(`Error al registrar lugar: ${error}`, 'Cerrar', {
-          duration: 2000,
+        this._snackBar.open(`Error al registrar lugar: ${error.error.mensaje}`, 'Cerrar', {
+          duration: 5000,
         });
       }
     );
