@@ -11,6 +11,7 @@ import { DatePipe } from '@angular/common';
 import { Usuario } from 'src/app/domain/usuario.model';
 import { TicketService } from '../../../services/ticket.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ReloadService } from 'src/app/services/reload.service';
 
 
 @Component({
@@ -47,12 +48,17 @@ export class CreateTicketComponent implements OnInit {
     private lugarService: LugarService,
     private datePipe: DatePipe,
     private ticketService: TicketService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private reloadService: ReloadService
   ) {
 
   }
 
   ngOnInit() {
+    this.actualizarListas();
+  }
+
+  actualizarListas(){
     this.vehiculoService.getAll().subscribe((data: Vehiculo[]) => {
       console.log("*****"+data);
       this.placas = data;
@@ -81,6 +87,7 @@ export class CreateTicketComponent implements OnInit {
       let usuarioReg = userData.usuario;
        this.usuarioSt=usuarioReg;
     }
+
   }
 
   updateDateTime() {
@@ -172,7 +179,8 @@ export class CreateTicketComponent implements OnInit {
       usuario:this.usuario,
       tarifa: this.tarifa,
       lugar: this.lugar,
-      vehiculo: this.vehiculo
+      vehiculo: this.vehiculo,
+      estado: 'P'
     }
 
     console.log(this.ticket);
@@ -202,6 +210,8 @@ cambiarEstado(){
   this.lugarService.actualizar(this.lugar).subscribe(
     response => {
       console.log('Lugar actuualizado con éxito');
+      this.reloadService.reload();
+      this.resetForm();
     },
     error => {
       this._snackBar.open(`Error al crear Acualizar Estado de Lugar: ${error.error}`, 'Cerrar', {
@@ -211,4 +221,16 @@ cambiarEstado(){
     }
   );
 }
+
+resetForm() {
+  this.actualizarListas();
+  this.vehiculo = {};
+  this.tarifa = {};
+  this.lugar = {};
+  this.ticket={};
+  this.selectedLugarId = 0;
+  this.vehicleSelected = false;
+  this.hasSelection = false;
+}
+
 }

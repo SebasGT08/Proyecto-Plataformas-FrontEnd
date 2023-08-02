@@ -8,6 +8,7 @@ export interface Ticket {
   fecha?: string;
   hora_entrada?: string;
   hora_salida?: string;
+  estado?:string;
   usuario?: Usuario;
   tarifa?: Tarifa;
   lugar?: Lugar;

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { LugarService } from 'src/app/services/lugar.service';
+import { ReloadService } from 'src/app/services/reload.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-info-lugar',
@@ -9,28 +12,29 @@ export class InfoLugarComponent implements OnInit{
   lugar_carros: number = 0;
   lugar_motos: number = 0;
   lugar_camiones: number = 0;
+  private reloadSubscription: Subscription | undefined;
 
+  constructor( private lugarService: LugarService,private reloadService: ReloadService) { }
 
   ngOnInit() {
-    this.lugar_carros = this.obtenerDisponibilidadCarros();
-    this.lugar_motos = this.obtenerDisponibilidadsMotos();
-    this.lugar_camiones = this.obtenerDisponibilidadCamiones();
-
+    this.getData();
+    this.reloadSubscription = this.reloadService.reloadObservable.subscribe(() => {
+      this.getData();
+    });
   }
 
-  obtenerDisponibilidadCarros(): number {
-    // Aquí es donde obtendrías las disponibilidad de los carros desde tu servicio
-    return 1;
+  ngOnDestroy() {
+    if (this.reloadSubscription) {
+      this.reloadSubscription.unsubscribe();
+    }
   }
 
-  obtenerDisponibilidadsMotos(): number {
-    // Aquí es donde obtendrías las disponibilidad de las motos desde tu servicio
-    return 0;
-  }
-
-  obtenerDisponibilidadCamiones(): number {
-    // Aquí es donde obtendrías las disponibilidad de los camiones desde tu servicio
-    return 0;
+  getData() {
+    this.lugarService.getAll().subscribe(lugares => {
+      this.lugar_carros = lugares.filter((lugar: { tipoVehiculo: string; estado: string; }) => lugar.tipoVehiculo === 'Carro' && lugar.estado === 'A').length;
+      this.lugar_motos = lugares.filter((lugar: { tipoVehiculo: string; estado: string; }) => lugar.tipoVehiculo === 'Moto' && lugar.estado === 'A').length;
+      this.lugar_camiones = lugares.filter((lugar: { tipoVehiculo: string; estado: string; }) => lugar.tipoVehiculo === 'Camion' && lugar.estado === 'A').length;
+    });
   }
 
 }
