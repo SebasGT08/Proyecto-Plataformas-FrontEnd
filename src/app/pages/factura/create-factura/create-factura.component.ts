@@ -11,6 +11,8 @@ import { PersonaService } from 'src/app/services/persona.service';
 import { FacturaService } from 'src/app/services/factura.service';
 import { Lugar } from 'src/app/domain/lugar.model';
 import { LugarService } from 'src/app/services/lugar.service';
+import { DataSharingService } from 'src/app/services/data-sharing.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-factura',
@@ -55,7 +57,9 @@ export class CreateFacturaComponent implements OnInit{
     private personaService: PersonaService,
     private lugarService: LugarService,
     private _snackBar: MatSnackBar,
-    private reloadService: ReloadService
+    private reloadService: ReloadService,
+    private sharedService: DataSharingService,
+    private router: Router
   ) {
 
   }
@@ -94,7 +98,7 @@ export class CreateFacturaComponent implements OnInit{
     this.updateDateTime();
     let fecha_sin_Z = selectedTicket?.fecha?.replace("Z", "")
     this.horasDif=this.getDiferenciaDeHoras(this.horaIngreso!,this.horaActual!,fecha_sin_Z!,this.fechaActual!);
-    console.log('DIfff'+ this.horasDif);
+   // console.log('DIfff'+ this.horasDif);
 
     this.iva=(this.valorTarifa!*this.horasDif)*0.12;
 
@@ -140,6 +144,11 @@ export class CreateFacturaComponent implements OnInit{
       return;
     }
 
+
+    this.ticket.hora_salida=this.horaActual;
+    this.ticket.estado='C';
+
+
     this.factura ={
       fecha: this.fechaActual,
       iva: this.iva,
@@ -149,12 +158,19 @@ export class CreateFacturaComponent implements OnInit{
       ticket: this.ticket
     }
 
+
+    this.sharedService.changeFactura(this.factura);
+
     this.facturaService.save(this.factura).subscribe(
       response => {
 
           this._snackBar.open('Factura creada con éxito', 'Cerrar', {
             duration: 5000,
           });
+
+          //console.log(response);
+
+          this.sharedService.changeNumFactura(response.facturaId);
 
           this.cambiarEstado();
          // this.ticket = { cedula: '',nombre: '',telefono: '',direccion: '',correo: '',tipo: 'E' };
@@ -173,7 +189,7 @@ export class CreateFacturaComponent implements OnInit{
     this.ticket.estado="C";
     this.ticket.hora_salida=this.horaActual;
 
-    console.log(this.ticket);
+    //console.log(this.ticket);
     this.ticketService.actualizar(this.ticket).subscribe(
       response => {
         console.log('Ticket actuualizado con éxito');
@@ -183,7 +199,7 @@ export class CreateFacturaComponent implements OnInit{
       },
       error => {
         this.reloadService.reload();
-        console.log(error);
+       // console.log(error);
 
         console.log(`Error al Acualizar Estado de Ticket: ${error.error}`);
 
@@ -200,7 +216,7 @@ export class CreateFacturaComponent implements OnInit{
 
     lugar.estado='A';
 
-      console.log(lugar);
+    //  console.log(lugar);
 
 
     this.lugarService.actualizar(lugar).subscribe(
@@ -223,6 +239,8 @@ export class CreateFacturaComponent implements OnInit{
   }
 
   resetForm() {
+
+
     this.actualizarListas();
     this.ticket = {};
     this.cliente = {};
@@ -233,6 +251,9 @@ export class CreateFacturaComponent implements OnInit{
     this.fechaST = undefined;
     this.horaST = undefined;
     this.totalST = undefined;
+
+    this.router.navigate(['pdf-factura']);
+
   }
 
 

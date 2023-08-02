@@ -1,0 +1,113 @@
+<app-menu></app-menu>
+<app-cabecera></app-cabecera>
+
+
+<div class="contenedor">
+
+<div>
+  <div class="form-box">
+
+
+    <div id="contentToConvert" style="font-family: Arial, sans-serif; margin: 0 auto; width: 600px;">
+      <h2 style="text-align: center;">Factura N°: {{ idfac}}</h2>
+      <hr>
+
+      <table style="width: 100%; margin-bottom: 20px;">
+          <tr>
+              <td><strong>Fecha:</strong> {{ factura_pdf.fecha }}</td>
+              <td><strong>IVA:</strong> {{ factura_pdf.iva }}</td>
+          </tr>
+          <tr>
+              <td><strong>Subtotal:</strong> {{ factura_pdf.subtotal }}</td>
+              <td><strong>Total:</strong> {{ factura_pdf.total }}</td>
+          </tr>
+      </table>
+
+      <h3>Información del cliente</h3>
+      <hr>
+      <table style="width: 100%; margin-bottom: 20px;">
+          <tr>
+              <td><strong>Nombre:</strong> {{ factura_pdf.persona?.nombre }}</td>
+              <td><strong>Cédula:</strong> {{ factura_pdf.persona?.cedula }}</td>
+          </tr>
+          <tr>
+              <td><strong>Correo:</strong> {{ factura_pdf.persona?.correo }}</td>
+              <td><strong>Dirección:</strong> {{ factura_pdf.persona?.direccion }}</td>
+          </tr>
+          <tr>
+              <td colspan="2"><strong>Teléfono:</strong> {{ factura_pdf.persona?.telefono }}</td>
+          </tr>
+      </table>
+
+      <h3>Información del Ticket</h3>
+      <hr>
+      <table style="width: 100%; margin-bottom: 20px;">
+          <tr>
+              <td><strong>Estado:</strong> {{ factura_pdf.ticket?.estado }}</td>
+              <td><strong>Fecha:</strong> {{ factura_pdf.ticket?.fecha }}</td>
+          </tr>
+          <tr>
+              <td><strong>Hora de entrada:</strong> {{ factura_pdf.ticket?.hora_entrada }}</td>
+              <td><strong>Hora de salida:</strong> {{ factura_pdf.ticket?.hora_salida }}</td>
+          </tr>
+      </table>
+
+      <h3>Información del Lugar</h3>
+      <hr>
+      <table style="width: 100%; margin-bottom: 20px;">
+          <tr>
+              <td><strong>Número de Lugar:</strong> {{ factura_pdf.ticket?.lugar?.numeroLugar }}</td>
+              <td><strong>Piso:</strong> {{ factura_pdf.ticket?.lugar?.piso }}</td>
+          </tr>
+          <tr>
+              <td colspan="2"><strong>Tipo de Vehículo:</strong> {{ factura_pdf.ticket?.lugar?.tipoVehiculo }}</td>
+          </tr>
+      </table>
+
+      <h3>Información de la Tarifa</h3>
+      <hr>
+      <table style="width: 100%; margin-bottom: 20px;">
+          <tr>
+              <td colspan="2"><strong>Costo de la Tarifa:</strong> {{ factura_pdf.ticket?.tarifa?.costoTarifa }}</td>
+          </tr>
+      </table>
+
+      <h3>Información del Usuario</h3>
+      <hr>
+      <table style="width: 100%; margin-bottom: 20px;">
+          <tr>
+              <td colspan="2"><strong>Nombre:</strong> {{ factura_pdf.ticket?.usuario?.persona?.nombre }}</td>
+          </tr>
+      </table>
+
+      <h3>Información del Vehículo</h3>
+      <hr>
+      <table style="width: 100%; margin-bottom: 20px;">
+          <tr>
+              <td colspan="2"><strong>Placa:</strong> {{ factura_pdf.ticket?.vehiculo?.placa }}</td>
+          </tr>
+      </table>
+
+
+      <br><br>
+    </div>
+
+
+
+
+  </div>
+  <button (click)="convertirFacturaAPDF()" style="display: block; margin-top:10px; padding: 10px 20px; background-color: #007bff; color: white; border-radius: 5px; border: none; cursor: pointer;">Generar PDF</button>
+</div>
+
+  <div class="contenedor-derecho">
+    <app-info-lugar></app-info-lugar>
+  </div>
+</div>
+
+
+
+
+
+
+
+

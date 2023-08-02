@@ -59,7 +59,8 @@ import { EditLugarComponent } from './pages/lugar/edit-lugar/edit-lugar.componen
 import { CreateLugarComponent } from './pages/lugar/create-lugar/create-lugar.component';
 import { MantLugarComponent } from './pages/lugar/mant-lugar/mant-lugar.component';
 import { MatDatepickerModule } from '@angular/material/datepicker'; // Asegúrate de importar MatDatepickerModule
-import { MatNativeDateModule } from '@angular/material/core'; // Importa MatNativeDateModule
+import { MatNativeDateModule } from '@angular/material/core';
+import { PdfFacturaComponent } from './pages/factura/pdf-factura/pdf-factura.component'; // Importa MatNativeDateModule
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { MatNativeDateModule } from '@angular/material/core'; // Importa MatNati
      CreateLugarComponent,
      
      MantLugarComponent,
+            PdfFacturaComponent,
      
   ],
   imports: [
