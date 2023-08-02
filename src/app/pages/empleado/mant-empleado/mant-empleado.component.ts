@@ -17,7 +17,9 @@ export class MantEmpleadoComponent implements OnInit{
   displayedColumns: string[] = ['id','cedula', 'nombre', 'telefono', 'direccion','correo','acciones'];
 
 
-  constructor(private _snackBar: MatSnackBar,private sharedService: DataSharingService,private router: Router, private personaService: PersonaService) { }
+  constructor(private _snackBar: MatSnackBar,
+    private sharedService: DataSharingService,
+    private router: Router, private personaService: PersonaService) { }
 
   ngOnInit(): void {
     this.getPersonas();
