@@ -32,6 +32,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { EditEmpleadoComponent } from './pages/empleado/edit-empleado/edit-empleado.component';
 import { EditClienteComponent } from './pages/cliente/edit-cliente/edit-cliente.component';
 import { EditUsuarioComponent } from './pages/usuario/edit-usuario/edit-usuario.component';
+import { CreateLugarComponent } from './pages/lugar/create-lugar/create-lugar.component';
 
 const routes: Routes = [
   //Login
@@ -49,6 +50,10 @@ const routes: Routes = [
   {path: 'create-cliente',component: CreateClienteComponent,canActivate: [AuthGuardService]},
   {path: 'mant-cliente',component: MantClienteComponent,canActivate: [AuthGuardService]},
   {path: 'edit-cliente',component: EditClienteComponent,canActivate: [AuthGuardService]},
+
+  //lugar
+  {path: 'create-lugar',component: CreateLugarComponent,canActivate: [AuthGuardService]},
+
 
   //Factura
   {path: 'create-factura',component: CreateFacturaComponent,canActivate: [AuthGuardService]},

@@ -55,6 +55,9 @@ import {MatSelectModule} from '@angular/material/select';
 import { EditClienteComponent } from './pages/cliente/edit-cliente/edit-cliente.component';
 import { DatePipe } from '@angular/common';
 import { EditUsuarioComponent } from './pages/usuario/edit-usuario/edit-usuario.component';
+import { EditLugarComponent } from './pages/lugar/edit-lugar/edit-lugar.component';
+import { CreateLugarComponent } from './pages/lugar/create-lugar/create-lugar.component';
+import { MantLugarComponent } from './pages/lugar/mant-lugar/mant-lugar.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +82,10 @@ import { EditUsuarioComponent } from './pages/usuario/edit-usuario/edit-usuario.
      InfoTarifaComponent,
      InfoLugarComponent,
      EditClienteComponent,
-     EditUsuarioComponent
+     EditUsuarioComponent,
+     EditLugarComponent,
+     CreateLugarComponent,
+     MantLugarComponent
   ],
   imports: [
     BrowserModule,
