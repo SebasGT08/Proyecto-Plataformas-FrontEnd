@@ -171,6 +171,7 @@ export class CreateFacturaComponent implements OnInit{
 
   cambiarEstado(){
     this.ticket.estado="C";
+    this.ticket.hora_salida=this.horaActual;
 
     console.log(this.ticket);
     this.ticketService.actualizar(this.ticket).subscribe(
