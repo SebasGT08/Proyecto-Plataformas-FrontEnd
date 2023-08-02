@@ -33,6 +33,7 @@ import { EditEmpleadoComponent } from './pages/empleado/edit-empleado/edit-emple
 import { EditClienteComponent } from './pages/cliente/edit-cliente/edit-cliente.component';
 import { EditUsuarioComponent } from './pages/usuario/edit-usuario/edit-usuario.component';
 import { CreateLugarComponent } from './pages/lugar/create-lugar/create-lugar.component';
+import { MantLugarComponent } from './pages/lugar/mant-lugar/mant-lugar.component';
 
 const routes: Routes = [
   //Login
@@ -53,6 +54,7 @@ const routes: Routes = [
 
   //lugar
   {path: 'create-lugar',component: CreateLugarComponent,canActivate: [AuthGuardService]},
+  {path: 'mant-lugar',component: MantLugarComponent,canActivate: [AuthGuardService]},
 
 
   //Factura
