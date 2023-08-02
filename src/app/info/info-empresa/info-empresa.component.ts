@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Ticket } from 'src/app/domain/ticket.model';
+import { TicketService } from 'src/app/services/ticket.service';
 
 @Component({
   selector: 'app-info-empresa',
@@ -11,12 +13,13 @@ export class InfoEmpresaComponent implements OnInit {
   gananciasCarros: number = 0;
   gananciasMotos: number = 0;
   gananciasCamiones: number = 0;
-  carrosEstacionados: number| undefined;
-  motosEstacionadas: number| undefined;
-  camionesEstacionados: number| undefined;
+  carrosEstacionados: number= 0;
+  motosEstacionadas: number= 0;
+  camionesEstacionados: number= 0;
   tiempoPromedio: number| undefined;
+  totalVehiculos: number =0;
 
-  constructor() {
+  constructor(private ticketService: TicketService) {
     setInterval(() => {
       this.fecha = new Date();
     }, 1000);
@@ -29,6 +32,7 @@ export class InfoEmpresaComponent implements OnInit {
     this.motosEstacionadas = this.obtenerMotosEstacionadas();
     this.camionesEstacionados = this.obtenerCamionesEstacionados();
     this.tiempoPromedio = this.obtenerTiempoPromedio();
+    this.totalVehiculos=this.obtenerVehiculosEstacionadosHoy();
 
     let userObject = localStorage.getItem('currentUser');
 
@@ -38,6 +42,8 @@ export class InfoEmpresaComponent implements OnInit {
        this.usuario=usuarioReg;
     }
   }
+
+
 
   obtenerGananciasCarros(): number {
     // Aquí es donde obtendrías las ganancias de los carros desde tu servicio
@@ -55,22 +61,59 @@ export class InfoEmpresaComponent implements OnInit {
   }
 
   obtenerCarrosEstacionados(): number {
-    // Aquí es donde obtendrías la cantidad de carros estacionados desde tu servicio
-    return 0;
+
+    this.ticketService.getAll().subscribe((tickets: Ticket[]) => {
+      let carros = tickets.filter(ticket => ticket.estado === 'P' && ticket.vehiculo?.tipoVehiculo === 'Carro');
+      this.carrosEstacionados = carros.length | 0;
+    });
+    return this.carrosEstacionados;
   }
 
+
   obtenerMotosEstacionadas(): number {
-    // Aquí es donde obtendrías la cantidad de motos estacionadas desde tu servicio
-    return 0;
+    this.ticketService.getAll().subscribe((tickets: Ticket[]) => {
+      let motos = tickets.filter(ticket => ticket.estado === 'P' && ticket.vehiculo?.tipoVehiculo === 'Moto');
+      this.motosEstacionadas = motos.length | 0;
+    });
+    return this.motosEstacionadas;
   }
 
   obtenerCamionesEstacionados(): number {
-    // Aquí es donde obtendrías la cantidad de camiones estacionados desde tu servicio
-    return 0;
+    this.ticketService.getAll().subscribe((tickets: Ticket[]) => {
+      let camiones = tickets.filter(ticket => ticket.estado === 'P' && ticket.vehiculo?.tipoVehiculo === 'Camion');
+      this.camionesEstacionados = camiones.length | 0;
+    });
+    return this.camionesEstacionados;
   }
+
+  obtenerVehiculosEstacionadosHoy(): number {
+
+    let fechaActualFormato=this.obtenerFechaFomateda()+'Z';
+    console.log(fechaActualFormato);
+
+    this.ticketService.getAll().subscribe((tickets: Ticket[]) => {
+      let vehiculosHoy = tickets.filter(ticket =>  ticket.fecha === fechaActualFormato);
+      this.totalVehiculos = vehiculosHoy.length | 0;
+    });
+
+    return this.totalVehiculos;
+}
 
   obtenerTiempoPromedio(): number {
     // Aquí es donde obtendrías el tiempo promedio de estacionamiento desde tu servicio
     return 0;
+  }
+
+  obtenerFechaFomateda():String{
+    let fechaActual = new Date();
+    let anio = fechaActual.getFullYear();
+    let mes = fechaActual.getMonth() + 1; // getMonth() devuelve valores de 0 a 11
+    let dia = fechaActual.getDate();
+
+    // Aseguramos que siempre haya dos dígitos en mes y dia.
+    let mesFormato = mes < 10 ? '0' + mes : '' + mes;
+    let diaFormato = dia < 10 ? '0' + dia : '' + dia;
+
+    return `${anio}-${mesFormato}-${diaFormato}`;
   }
 }
