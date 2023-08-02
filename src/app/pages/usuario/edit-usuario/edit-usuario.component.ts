@@ -12,7 +12,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./edit-usuario.component.scss']
 })
 export class EditUsuarioComponent implements OnInit {
-  @Input() usuarios: Usuario = { cargo: '', usuario: '', contrasenia: '' };
+  @Input() usuarioN: Usuario = { id:0,cargo: '', usuario: '', contrasenia: '' };
 
   constructor(
     private _snackBar: MatSnackBar,
@@ -24,7 +24,7 @@ export class EditUsuarioComponent implements OnInit {
   ngOnInit() {
     this.dataSharingService.currentUsuario.subscribe(usuario => {
       if (usuario) {
-        this.usuarios = this.usuarios;
+        this.usuarioN = usuario;
       }
     });
 
@@ -37,7 +37,7 @@ export class EditUsuarioComponent implements OnInit {
     }
 
 
-    this.usuarioService.actualizar(this.usuarios).subscribe(
+    this.usuarioService.actualizar(this.usuarioN).subscribe(
       response => {
         if (response.codigo) {
           this._snackBar.open(`Error al actualizar usuario: ${response.mensaje}`, 'Cerrar', {
@@ -47,7 +47,7 @@ export class EditUsuarioComponent implements OnInit {
           this._snackBar.open('Usuario actualizado con éxito', 'Cerrar', {
             duration: 2000,
           });
-          this.usuarios = {  cargo: '', usuario: '', contrasenia: '' };
+          this.usuarioN = {  cargo: '', usuario: '', contrasenia: '' };
           this.router.navigate(['mant-usuario']);
         }
       },
@@ -59,5 +59,5 @@ export class EditUsuarioComponent implements OnInit {
     );
   }
 
-  
+
 }

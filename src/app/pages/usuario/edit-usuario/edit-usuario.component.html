@@ -12,35 +12,35 @@
           <br>
         </div>
 
-        
+
         <!-- Agregamos el campo "Cargo" como un select -->
         <div class="inputbox">
             <i class="fas fa-briefcase"></i>
             <mat-form-field appearance="outline">
               <mat-label>Cargo</mat-label>
-              <mat-select [(ngModel)]="usuarios.cargo" name="cargo"  required #cargo="ngModel">
-                <mat-option value="A">A</mat-option>
-                <mat-option value="G">G</mat-option>
+              <mat-select [(ngModel)]="usuarioN.cargo" name="cargo"  required #cargo="ngModel">
+                <mat-option value="A">Administrador</mat-option>
+                <mat-option value="G">General</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
 
           <div class="inputbox" [class.ng-invalid]="usuario.invalid && (usuario.dirty || usuario.touched)">
             <i class="fas fa-lock"></i>
-            <input type="text" [(ngModel)]="usuarios.usuario" name="user" required #usuario="ngModel">
+            <input type="text" [(ngModel)]="usuarioN.usuario" name="user" required #usuario="ngModel">
             <label for="">Usuario</label>
           </div>
-  
+
           <div class="inputbox" [class.ng-invalid]="contrasenia.invalid && (contrasenia.dirty || contrasenia.touched)">
             <i class="fas fa-lock"></i>
-            <input type="password" [(ngModel)]="usuarios.contrasenia" name="contrasenia" required #contrasenia="ngModel">
+            <input type="password" [(ngModel)]="usuarioN.contrasenia" name="contrasenia" required #contrasenia="ngModel">
             <label for="">Contraseña</label>
           </div>
 
-          
-    
+
+
           <button mat-raised-button color="primary" class="full-width-button" type="submit" [disabled]="!registerForm.valid">Registrar</button>
-  
+
         </form>
       </div>
     </div>

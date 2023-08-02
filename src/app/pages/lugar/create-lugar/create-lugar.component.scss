@@ -153,3 +153,17 @@ button{
       font-size: 16px; /* Tamaño de fuente del select */
     }
   }
+
+  ::ng-deep mat-select span {
+    color: #fff;
+  }
+
+  /* Para cambiar el ancho de los mat-select */
+  ::ng-deep mat-form-field{
+    color: #fff;
+    width: 95%;
+  }
+
+  ::ng-deep mat-form-field mat-label{
+    color: #fff;
+  }

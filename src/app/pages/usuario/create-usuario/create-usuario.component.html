@@ -16,9 +16,10 @@
         <div class="inputbox">
           <i class="fas fa-users"></i>
           <mat-form-field appearance="outline">
+            <mat-label>Empleado</mat-label>
             <mat-select [(ngModel)]="selectedPersonaId" name="personaid" required>
-                <mat-option *ngFor="let persona of personas" [value]="persona.personaid">{{ persona.personaid }}{{ persona.nombre }}</mat-option>
-              </mat-select>              
+                <mat-option *ngFor="let persona of personas" [value]="persona.personaid"><b>Cedula: </b>{{ "\t"+persona.cedula+"\t" }}-<b>Nombre: </b>{{ "\t"+persona.nombre+"\t" }}</mat-option>
+              </mat-select>
           </mat-form-field>
         </div>
 
@@ -28,8 +29,8 @@
             <mat-form-field appearance="outline">
               <mat-label>Cargo</mat-label>
               <mat-select [(ngModel)]="usuarios.cargo" name="cargo"  required #cargo="ngModel">
-                <mat-option value="A">A</mat-option>
-                <mat-option value="G">G</mat-option>
+                <mat-option value="A">Administrador</mat-option>
+                <mat-option value="G">General</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
@@ -39,17 +40,17 @@
             <input type="text" [(ngModel)]="usuarios.usuario" name="user" required #usuario="ngModel">
             <label for="">Usuario</label>
           </div>
-  
+
           <div class="inputbox" [class.ng-invalid]="contrasenia.invalid && (contrasenia.dirty || contrasenia.touched)">
             <i class="fas fa-lock"></i>
             <input type="password" [(ngModel)]="usuarios.contrasenia" name="contrasenia" required #contrasenia="ngModel">
             <label for="">Contraseña</label>
           </div>
 
-          
-    
+
+
           <button mat-raised-button color="primary" class="full-width-button" type="submit" [disabled]="!registerForm.valid">Registrar</button>
-  
+
         </form>
       </div>
     </div>

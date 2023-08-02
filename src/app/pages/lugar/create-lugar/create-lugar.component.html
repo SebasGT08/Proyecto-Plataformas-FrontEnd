@@ -12,15 +12,45 @@
           <br>
         </div>
 
+         <!-- Piso -->
+         <div class="inputbox1"><label for="">Piso</label>
+         </div>
+         <div class="inputbox">
+
+           <i class="fas fa-building"></i>
+           <mat-form-field appearance="outline">
+           <mat-select [(ngModel)]="lugar.piso" name="piso" required>
+             <mat-option *ngFor="let piso of pisos" [value]="piso">{{ piso }}</mat-option>
+           </mat-select>
+         </mat-form-field>
+         </div>
+
         <!-- Número de Lugar -->
         <div class="inputbox1"><label for="">Número de Lugar</label>
         </div>
-        
+
         <div class="inputbox">
           <i class="fas fa-car"></i>
-          <select [(ngModel)]="lugar.numeroLugar" name="numeroLugar" required>
-            <option *ngFor="let numero of numerosLugar" [value]="numero">{{ numero }}</option>
-          </select>
+          <mat-form-field appearance="outline">
+          <mat-select [(ngModel)]="lugar.numeroLugar" name="numeroLugar" required>
+            <mat-option *ngFor="let numero of numerosLugar" [value]="numero">{{ numero }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        </div>
+
+        <!-- Tipo de Vehículo -->
+        <div class="inputbox1"><label for="">Tipo de Vehículo</label>
+        </div>
+        <div class="inputbox">
+
+          <i class="fas fa-car-side"></i>
+          <mat-form-field appearance="outline">
+          <mat-select [(ngModel)]="lugar.tipoVehiculo" name="tipoVehiculo" required>
+            <mat-option value="Moto">Moto</mat-option>
+            <mat-option value="Carro">Carro</mat-option>
+            <mat-option value="Camion">Camión</mat-option>
+          </mat-select>
+        </mat-form-field>
         </div>
 
         <!-- Estado -->
@@ -28,35 +58,16 @@
         </div>
         <div class="inputbox">
           <i class="fas fa-check-circle"></i>
-          <select [(ngModel)]="lugar.estado" name="estado" required>
-            <option value="A">Activo</option>
-            <option value="I">Inactivo</option>
-          </select>
+          <mat-form-field appearance="outline">
+          <mat-select [(ngModel)]="lugar.estado" name="estado" required>
+            <mat-option value="A">Activo</mat-option>
+            <mat-option value="I">Inactivo</mat-option>
+          </mat-select>
+        </mat-form-field>
         </div>
 
-        <!-- Piso -->
-        <div class="inputbox1"><label for="">Piso</label>
-        </div>
-        <div class="inputbox">
-          
-          <i class="fas fa-building"></i>
-          <select [(ngModel)]="lugar.piso" name="piso" required>
-            <option *ngFor="let piso of pisos" [value]="piso">{{ piso }}</option>
-          </select>
-        </div>
 
-        <!-- Tipo de Vehículo -->
-        <div class="inputbox1"><label for="">Tipo de Vehículo</label>
-        </div>
-        <div class="inputbox">
-          
-          <i class="fas fa-car-side"></i>
-          <select [(ngModel)]="lugar.tipoVehiculo" name="tipoVehiculo" required>
-            <option value="Moto">Moto</option>
-            <option value="Carro">Carro</option>
-            <option value="Camion">Camión</option>
-          </select>
-        </div>
+
 
         <!-- Botón Registrar -->
         <button mat-raised-button color="primary" class="full-width-button" type="submit" [disabled]="!registerForm.valid">Registrar</button>

@@ -140,3 +140,22 @@ button {
 .ng-invalid:not(form) {
   border-color: red;
 }
+
+::ng-deep .mat-select-panel .mat-option-text {
+  color: red; /* cambiar "red" por el color que prefieras */
+}
+
+
+::ng-deep mat-select span {
+  color: #fff;
+}
+
+/* Para cambiar el ancho de los mat-select */
+::ng-deep mat-form-field{
+  color: #fff;
+  width: 95%;
+}
+
+::ng-deep mat-form-field mat-label{
+  color: #fff;
+}
