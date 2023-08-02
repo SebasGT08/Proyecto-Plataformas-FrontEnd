@@ -34,6 +34,7 @@ import { EditClienteComponent } from './pages/cliente/edit-cliente/edit-cliente.
 import { EditUsuarioComponent } from './pages/usuario/edit-usuario/edit-usuario.component';
 import { CreateLugarComponent } from './pages/lugar/create-lugar/create-lugar.component';
 import { MantLugarComponent } from './pages/lugar/mant-lugar/mant-lugar.component';
+import { EditLugarComponent } from './pages/lugar/edit-lugar/edit-lugar.component';
 
 const routes: Routes = [
   //Login
@@ -55,6 +56,7 @@ const routes: Routes = [
   //lugar
   {path: 'create-lugar',component: CreateLugarComponent,canActivate: [AuthGuardService]},
   {path: 'mant-lugar',component: MantLugarComponent,canActivate: [AuthGuardService]},
+  {path: 'edit-lugar',component: EditLugarComponent,canActivate: [AuthGuardService]},
 
 
   //Factura

@@ -41,12 +41,7 @@ export class CreateLugarComponent implements OnInit {
           this._snackBar.open('Lugar registrado con éxito', 'Cerrar', {
             duration: 2000,
           });
-          this.lugar = {
-            numeroLugar: 1,
-            estado: 'A',
-            piso: 1,
-            tipoVehiculo: 'Moto'
-          };
+          
         }
       },
       error => {

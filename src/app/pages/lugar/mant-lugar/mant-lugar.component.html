@@ -1,1 +1,60 @@
-<p>mant-lugar works!</p>
+<app-menu></app-menu>
+<app-cabecera></app-cabecera>
+<div class="contenedor1">
+  <mat-toolbar color="primary" class="box1 center-title">
+    <h2>Mantenimiento de Lugares</h2>
+  </mat-toolbar>
+</div>
+<br>
+<div *ngIf="listadolugar?.length == 0">
+  <mat-toolbar color="warn" class="center-title">
+    <p>No existen lugares</p>
+  </mat-toolbar>
+</div>
+
+<div *ngIf="listadolugar && listadolugar.length > 0">
+  <table mat-table [dataSource]="listadolugar">
+
+    <!-- Columna Lugar ID -->
+    <ng-container matColumnDef="lugar_id">
+      <th mat-header-cell *matHeaderCellDef> Lugar ID </th>
+      <td mat-cell *matCellDef="let lugar"> {{ lugar.lugarId }} </td>
+    </ng-container>
+
+    <!-- Columna Numero de Lugar -->
+    <ng-container matColumnDef="numeroLugar">
+      <th mat-header-cell *matHeaderCellDef> Numero de Lugar </th>
+      <td mat-cell *matCellDef="let lugar"> {{ lugar.numeroLugar }} </td>
+    </ng-container>
+
+    <!-- Columna Estado -->
+    <ng-container matColumnDef="estado">
+      <th mat-header-cell *matHeaderCellDef> Estado </th>
+      <td mat-cell *matCellDef="let lugar"> {{ lugar.estado }} </td>
+    </ng-container>
+
+    <!-- Columna Tipo de Vehiculo -->
+    <ng-container matColumnDef="tipoVehiculo">
+      <th mat-header-cell *matHeaderCellDef> Tipo de Vehiculo </th>
+      <td mat-cell *matCellDef="let lugar"> {{ lugar.tipoVehiculo }} </td>
+    </ng-container>
+
+    <!-- Columna Piso -->
+    <ng-container matColumnDef="piso">
+      <th mat-header-cell *matHeaderCellDef> Piso </th>
+      <td mat-cell *matCellDef="let lugar"> {{ lugar.piso }} </td>
+    </ng-container>
+
+    <!-- Columna Acciones -->
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let lugar">
+        <button mat-button color="warn" (click)="eliminar(lugar)">Eliminar</button>
+        <button mat-button color="basic" (click)="editar(lugar)">Editar</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
