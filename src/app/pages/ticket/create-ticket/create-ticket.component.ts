@@ -59,10 +59,29 @@ export class CreateTicketComponent implements OnInit {
   }
 
   actualizarListas(){
-    this.vehiculoService.getAll().subscribe((data: Vehiculo[]) => {
-      console.log("*****"+data);
-      this.placas = data;
+    // this.vehiculoService.getAll().subscribe((data: Vehiculo[]) => {
+    //   this.placas = data;
+    // });
+
+    this.vehiculoService.getAll().subscribe((vehiculos: Vehiculo[]) => {
+      this.ticketService.getAll().subscribe((tickets: Ticket[]) => {
+        // Creamos un conjunto con las placas de los vehículos que están en los tickets con un estado diferente de 'C'
+        const placasVehiculosEnTicketsSinC = new Set(
+          tickets
+            .filter(ticket => ticket.estado !== 'C')
+            .map(ticket => ticket.vehiculo!.placa)
+        );
+
+        // Filtramos la lista de vehículos para solo incluir aquellos cuyas placas no están en los tickets sin estado 'C'
+        this.placas = vehiculos.filter(
+          vehiculo => !placasVehiculosEnTicketsSinC.has(vehiculo.placa)
+        );
+      });
     });
+
+
+
+
 
     this.tarifaService.getAll().subscribe(data => {
 

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Ticket } from 'src/app/domain/ticket.model';
 import { TicketService } from 'src/app/services/ticket.service';
+import { ReloadService } from 'src/app/services/reload.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-info-empresa',
@@ -18,13 +20,29 @@ export class InfoEmpresaComponent implements OnInit {
   camionesEstacionados: number= 0;
   tiempoPromedio: number| undefined;
   totalVehiculos: number =0;
+  private reloadSubscription: Subscription | undefined;
 
-  constructor(private ticketService: TicketService) {
+  constructor(private ticketService: TicketService,private reloadService: ReloadService) {
     setInterval(() => {
       this.fecha = new Date();
     }, 1000);
   }
   ngOnInit() {
+    this.getData();
+    this.reloadSubscription = this.reloadService.reloadObservable2.subscribe(() => {
+      this.getData();
+    });
+
+  }
+
+  ngOnDestroy() {
+    if (this.reloadSubscription) {
+      this.reloadSubscription.unsubscribe();
+    }
+  }
+
+
+  getData() {
     this.gananciasCarros = this.obtenerGananciasCarros();
     this.gananciasMotos = this.obtenerGananciasMotos();
     this.gananciasCamiones = this.obtenerGananciasCamiones();
@@ -42,7 +60,6 @@ export class InfoEmpresaComponent implements OnInit {
        this.usuario=usuarioReg;
     }
   }
-
 
 
   obtenerGananciasCarros(): number {

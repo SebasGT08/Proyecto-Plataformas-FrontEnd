@@ -4,12 +4,19 @@
 
 <div class="contenedor">
 
+
   <div class="info">
 
     <section>
       <div class="form-box">
         <div class="form-value">
           <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+
+            <div class="contenedor-titulo">
+              <br>
+              <h2>Registrar Ingreso</h2>
+              <br>
+            </div>
 
             <div class="inputbox" [class.ng-invalid]="placa.invalid && (placa.dirty || placa.touched)">
               <i class="fas fa-car"></i>
@@ -84,7 +91,6 @@
 
   <div class="contenedor-derecho">
     <app-info-lugar></app-info-lugar>
-    <app-info-tarifa></app-info-tarifa>
   </div>
 </div>
 

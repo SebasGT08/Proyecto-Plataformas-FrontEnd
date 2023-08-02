@@ -1,4 +1,90 @@
 <app-menu></app-menu>
 <app-cabecera></app-cabecera>
-<p>create factura
-</p>
+
+
+<div class="contenedor">
+
+
+  <div class="info">
+
+    <section>
+      <div class="form-box">
+        <div class="form-value">
+          <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+
+            <div class="contenedor-titulo">
+              <br>
+              <h2>Facturar</h2>
+              <br>
+            </div>
+
+
+            <div class="inputbox">
+              <i class="fas fa-ticket-alt"></i>
+              <label for="">Ticket:</label>
+              <mat-select class="mat-select-style my-custom-mat-select" [(ngModel)]="selectedTicketId" name="selectedTicketId" required (selectionChange)="onTicketChange($event.value)">
+                <mat-option *ngFor="let option of tickets" [value]="option.ticketid" >
+                  <b>Placa:</b> {{option?.vehiculo?.placa}} - <b>Lugar:</b> {{option?.lugar?.piso}} - {{option?.lugar?.numeroLugar}}
+                </mat-option>
+              </mat-select>
+            </div>
+
+            <div class="inputbox">
+              <i class="fas fa-user"></i>
+              <label for="">Cliente:</label>
+              <mat-select class="mat-select-style my-custom-mat-select" [(ngModel)]="selectedClienteId" name="selectedClienteId" required (selectionChange)="onClienteChange($event.value)">
+                <mat-option *ngFor="let option of clientes" [value]="option.personaid" >
+                  <b>Cedula:</b> {{option?.cedula}} -<b> Nombre: </b> {{option?.nombre}}
+                </mat-option>
+              </mat-select>
+            </div>
+
+
+
+
+            <br> <br>
+            <div class="inputbox">
+              <i class="fas fa-calendar-alt"></i>
+              <input type="text" [(ngModel)]="fechaST" name="fechaST" disabled>
+              <!-- <label for="">Fecha</label> -->
+            </div>
+
+
+            <div class="inputbox">
+              <i class="fas fa-clock"></i>
+              <input type="text" [(ngModel)]="horaST" name="horaIngreso" disabled>
+              <label for="">Datos Tiempo:</label>
+            </div>
+
+            <div class="inputbox">
+              <i class="fas fa-wallet"></i>
+              <input type="text" [(ngModel)]="pagarST" name="Pagar" disabled>
+              <label for="">A Pagar:</label>
+            </div>
+
+            <div class="inputbox">
+              <i class="fas fa-cash-register"></i>
+              <input class="total input-total" type="text" [(ngModel)]="totalST" name="total" disabled>
+              <label for="">Total:</label>
+            </div>
+
+
+            <button mat-raised-button color="primary" class="full-width-button" type="submit"
+[disabled]="!registerForm.valid || !selectedClienteId|| !selectedTicketId || !fechaActual || !horaActual">Registrar</button>
+
+
+          </form>
+        </div>
+      </div>
+    </section>
+
+
+
+  </div>
+
+  <div class="contenedor-derecho">
+    <app-info-lugar></app-info-lugar>
+  </div>
+</div>
+
+
