@@ -3,6 +3,7 @@ import { Persona } from './../domain/persona.model';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Usuario } from '../domain/usuario.model';
+import { Lugar } from '../domain/lugar.model';
 
 
 
@@ -12,8 +13,12 @@ import { Usuario } from '../domain/usuario.model';
 export class DataSharingService {
   private personaSource = new BehaviorSubject<Persona | null>(null);
   private usuarioSource = new BehaviorSubject<Usuario | null>(null);
+  private lugarSource = new BehaviorSubject<Lugar | null>(null);
+
   currentPersona = this.personaSource.asObservable();
   currentUsuario = this.usuarioSource.asObservable();
+  currentLugar = this.lugarSource.asObservable();
+
 
 
   constructor() { }
@@ -23,6 +28,9 @@ export class DataSharingService {
   }
   changeUsuario(usuario: Usuario) {
     this.usuarioSource.next(usuario);
+  }
+  changeLugar(lugar: Lugar) {
+    this.lugarSource.next(lugar);
   }
 
 
