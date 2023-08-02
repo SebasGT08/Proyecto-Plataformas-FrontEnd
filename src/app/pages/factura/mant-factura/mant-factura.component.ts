@@ -1,6 +1,9 @@
 import { Factura } from './../../../domain/factura.model';
 import { Component, OnInit } from '@angular/core';
 import { FacturaService } from 'src/app/services/factura.service';
+import { Persona } from '../../../domain/persona.model';
+import { DataSharingService } from 'src/app/services/data-sharing.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mant-factura',
@@ -13,10 +16,14 @@ export class MantFacturaComponent implements OnInit{
   listadoFacturasOriginal: any;
   fechaFiltro: Date | null = null;
 
- displayedColumns: string[] = ['id','fecha','cedula', 'nombre', 'ticket', 'placa','tipoVehiculo','subtotal','total'];
+ displayedColumns: string[] = ['id','fecha','cedula', 'nombre', 'ticket', 'placa','tipoVehiculo','subtotal','total','acciones'];
 
 
- constructor( private facturaService: FacturaService) { }
+ constructor(
+  private facturaService: FacturaService,
+  private sharedService: DataSharingService,
+  private router: Router
+  ) { }
 
  ngOnInit(): void {
    this.getPersonas();
@@ -43,7 +50,14 @@ aplicarFiltro(): void {
   }
 }
 
+imprimir(factura: Factura){
 
+
+  this.sharedService.changeFactura(factura);
+  this.sharedService.changeNumFactura(factura.facturaid!);
+  this.router.navigate(['pdf-factura']);
+
+}
 
 
 
