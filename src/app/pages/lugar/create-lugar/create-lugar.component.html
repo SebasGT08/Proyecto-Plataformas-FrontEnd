@@ -1,60 +1,80 @@
 <app-menu></app-menu>
 <app-cabecera></app-cabecera>
 
-<section>
-  <div class="form-box">
-    <div class="form-value">
-      <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
 
-        <div class="contenedor-titulo">
-          <br>
-          <h2>Registrar Lugar</h2>
-          <br>
+
+<div class="contenedor">
+
+
+  <div class="info">
+
+
+    <section>
+      <div class="form-box">
+        <div class="form-value">
+          <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+
+            <div class="contenedor-titulo">
+              <br>
+              <h2>Registrar Lugar</h2>
+              <br>
+            </div>
+
+             <!-- Piso -->
+             <div class="inputbox1"><label for="">Piso</label>
+             </div>
+             <div class="inputbox">
+
+               <i class="fas fa-building"></i>
+               <mat-form-field appearance="outline">
+               <mat-select [(ngModel)]="lugar.piso" name="piso" required>
+                 <mat-option *ngFor="let piso of pisos" [value]="piso">{{ piso }}</mat-option>
+               </mat-select>
+             </mat-form-field>
+             </div>
+
+            <!-- Número de Lugar -->
+            <div class="inputbox1"><label for="">Número de Lugar</label>
+            </div>
+
+            <div class="inputbox">
+              <i class="fas fa-car"></i>
+              <mat-form-field appearance="outline">
+              <mat-select [(ngModel)]="lugar.numeroLugar" name="numeroLugar" required>
+                <mat-option *ngFor="let numero of numerosLugar" [value]="numero">{{ numero }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            </div>
+
+            <!-- Tipo de Vehículo -->
+            <div class="inputbox1"><label for="">Tipo de Vehículo</label>
+            </div>
+            <div class="inputbox">
+
+              <i class="fas fa-car-side"></i>
+              <mat-form-field appearance="outline">
+              <mat-select [(ngModel)]="lugar.tipoVehiculo" name="tipoVehiculo" required>
+                <mat-option value="Moto">Moto</mat-option>
+                <mat-option value="Carro">Carro</mat-option>
+                <mat-option value="Camion">Camión</mat-option>
+              </mat-select>
+            </mat-form-field>
+            </div>
+
+            <!-- Botón Registrar -->
+            <button mat-raised-button color="primary" class="full-width-button" type="submit" [disabled]="!registerForm.valid">Registrar</button>
+
+          </form>
         </div>
+      </div>
+    </section>
 
-         <!-- Piso -->
-         <div class="inputbox1"><label for="">Piso</label>
-         </div>
-         <div class="inputbox">
 
-           <i class="fas fa-building"></i>
-           <mat-form-field appearance="outline">
-           <mat-select [(ngModel)]="lugar.piso" name="piso" required>
-             <mat-option *ngFor="let piso of pisos" [value]="piso">{{ piso }}</mat-option>
-           </mat-select>
-         </mat-form-field>
-         </div>
-
-        <!-- Número de Lugar -->
-        <div class="inputbox1"><label for="">Número de Lugar</label>
-        </div>
-
-        <div class="inputbox">
-          <i class="fas fa-car"></i>
-          <mat-form-field appearance="outline">
-          <mat-select [(ngModel)]="lugar.numeroLugar" name="numeroLugar" required>
-            <mat-option *ngFor="let numero of numerosLugar" [value]="numero">{{ numero }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-        </div>
-
-        <!-- Tipo de Vehículo -->
-        <div class="inputbox1"><label for="">Tipo de Vehículo</label>
-        </div>
-        <div class="inputbox">
-
-          <i class="fas fa-car-side"></i>
-          <select [(ngModel)]="lugar.tipoVehiculo" name="tipoVehiculo" required>
-            <option value="Moto">Moto</option>
-            <option value="Carro">Carro</option>
-            <option value="Camion">Camión</option>
-          </select>
-        </div>
-
-        <!-- Botón Registrar -->
-        <button mat-raised-button color="primary" class="full-width-button" type="submit" [disabled]="!registerForm.valid">Registrar</button>
-
-      </form>
-    </div>
   </div>
-</section>
+
+  <div class="contenedor-derecho">
+    <app-info-lugar></app-info-lugar>
+  </div>
+</div>
+
+

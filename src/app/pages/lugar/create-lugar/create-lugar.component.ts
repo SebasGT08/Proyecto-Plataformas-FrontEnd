@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Lugar } from 'src/app/domain/lugar.model';
 import { LugarService } from 'src/app/services/lugar.service';
+import { ReloadService } from 'src/app/services/reload.service';
 
 @Component({
   selector: 'app-create-lugar',
@@ -21,7 +22,7 @@ export class CreateLugarComponent implements OnInit {
   numerosLugar: number[] = Array.from({ length: 20 }, (_, i) => i + 1); // Genera un arreglo de números del 1 al 20
   pisos: number[] = [1, 2, 3]; // Pisos del 1 al 3
 
-  constructor(private router: Router, private _snackBar: MatSnackBar, private lugarService: LugarService) {}
+  constructor(private router: Router, private _snackBar: MatSnackBar, private lugarService: LugarService,private reloadService: ReloadService) {}
 
   ngOnInit(): void {}
 
@@ -39,10 +40,12 @@ export class CreateLugarComponent implements OnInit {
           this._snackBar.open(`Error al registrar lugar: ${response.mensaje}`, 'Cerrar', {
             duration: 5000,
           });
+          this.reloadService.reload();
         } else {
           this._snackBar.open('Lugar registrado con éxito', 'Cerrar', {
             duration: 5000,
           });
+          this.reloadService.reload();
 
         }
       },
@@ -50,6 +53,7 @@ export class CreateLugarComponent implements OnInit {
         this._snackBar.open(`Error al registrar lugar: ${error.error.mensaje}`, 'Cerrar', {
           duration: 5000,
         });
+        this.reloadService.reload();
       }
     );
   }

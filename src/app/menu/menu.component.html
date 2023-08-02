@@ -1,7 +1,11 @@
 <mat-toolbar color="primary">
   <button mat-button routerLink="/home" class="hover-grow"><mat-icon>home</mat-icon> Home</button>
   <span class="separator"></span>
-  <button mat-button [matMenuTriggerFor]="menu" class="hover-grow"><mat-icon>person</mat-icon> Usuarios</button>
+
+  <!-- Usuarios -->
+  <button mat-button *ngIf="isAdmin" [matMenuTriggerFor]="menu" class="hover-grow">
+    <mat-icon>person</mat-icon> Usuarios
+  </button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item routerLink="/create-empleado" ><mat-icon>person_add</mat-icon> Crear Empleado</button>
     <button mat-menu-item routerLink="/create-usuario" ><mat-icon>person_add</mat-icon> Crear Usuario</button>
@@ -9,31 +13,56 @@
     <button mat-menu-item routerLink="/mant-usuario" ><mat-icon>build</mat-icon> Mantenimiento Usuarios</button>
   </mat-menu>
 
-  <button mat-button [matMenuTriggerFor]="menu2" class="hover-grow"><mat-icon>group</mat-icon> Clientes</button>
+  <!-- Clientes -->
+  <button mat-button *ngIf="isAdmin || isGeneral" [matMenuTriggerFor]="menu2" class="hover-grow">
+    <mat-icon>group</mat-icon> Clientes
+  </button>
   <mat-menu #menu2="matMenu">
     <button mat-menu-item routerLink="/create-cliente" ><mat-icon>person_add</mat-icon> Crear Cliente</button>
     <button mat-menu-item routerLink="/mant-cliente"><mat-icon>build</mat-icon> Mantenimiento Clientes</button>
   </mat-menu>
 
-  <button mat-button [matMenuTriggerFor]="menu4" class="hover-grow"><mat-icon>confirmation_number</mat-icon> Tickets</button>
+  <!-- Tickets -->
+  <button mat-button [matMenuTriggerFor]="menu4" class="hover-grow">
+    <mat-icon>confirmation_number</mat-icon> Tickets
+  </button>
   <mat-menu #menu4="matMenu">
     <button mat-menu-item routerLink="/mant-ticket"><mat-icon>list_alt</mat-icon>Historial Tickets</button>
   </mat-menu>
 
-  <button mat-button [matMenuTriggerFor]="menu3" class="hover-grow"><mat-icon>apartment</mat-icon> Lugares</button>
+  <!-- Lugares -->
+  <button mat-button *ngIf="isAdmin" [matMenuTriggerFor]="menu3" class="hover-grow">
+    <mat-icon>apartment</mat-icon> Lugares
+  </button>
   <mat-menu #menu3="matMenu">
     <button mat-menu-item routerLink="/create-lugar" ><mat-icon>add_location</mat-icon> Crear Lugar</button>
     <button mat-menu-item routerLink="/mant-lugar"><mat-icon>build</mat-icon> Mantenimiento Lugar</button>
   </mat-menu>
-  <button mat-button routerLink="/mant-factura" class="hover-grow"><mat-icon>receipt</mat-icon> Facturas</button>
+
+  <!-- Facturas -->
+  <button mat-button [matMenuTriggerFor]="menu5" class="hover-grow">
+    <mat-icon>receipt</mat-icon> Facturas
+  </button>
+  <mat-menu #menu5="matMenu">
+    <button mat-menu-item routerLink="/mant-factura"><mat-icon>list_alt</mat-icon>Historial Facturas</button>
+  </mat-menu>
 
   <span class="spacer"></span>
 
-  <button mat-button class="ingreso-color hover-grow" routerLink="/create-ticket"><mat-icon>add_box</mat-icon> Registrar Ingreso</button>
+  <!-- Registrar Ingreso -->
+  <button mat-button class="ingreso-color hover-grow" routerLink="/create-ticket">
+    <mat-icon>add_box</mat-icon> Registrar Ingreso
+  </button>
 
-  <button mat-button class="cobrar-color hover-grow" routerLink="/create-factura"><mat-icon>payment</mat-icon> Cobrar</button>
+  <!-- Cobrar -->
+  <button mat-button class="cobrar-color hover-grow" routerLink="/create-factura">
+    <mat-icon>payment</mat-icon> Cobrar
+  </button>
 
   <span class="separator"></span>
-  <button mat-button color="warn" class="hover-grow" (click)="logout()"><mat-icon>exit_to_app</mat-icon> Cerrar Sesión</button>
-</mat-toolbar>
 
+  <!-- Cerrar Sesión -->
+  <button mat-button color="warn" class="hover-grow" (click)="logout()">
+    <mat-icon>exit_to_app</mat-icon> Cerrar Sesión
+  </button>
+</mat-toolbar>

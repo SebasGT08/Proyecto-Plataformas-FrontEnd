@@ -167,3 +167,32 @@ button{
   ::ng-deep mat-form-field mat-label{
     color: #fff;
   }
+
+  .contenedor {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: 100%;
+    //height: 100vh; /* esto asume que quieres que el contenedor ocupe toda la altura de la vista */
+  }
+
+  .info {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    height: 100%;
+    width: 100%;
+  }
+
+  .contenedor-derecho {
+    display: grid;
+    grid-template-rows: 50% 50%;
+    // grid-column: 21/ 3;
+    // grid-row: 1 / 1;
+    height: 100%;
+    width: 100%;
+  }
+
+  .app-info-lugar {
+    grid-row: 1 / 2;
+    height: 100%;
+    width: 100%;
+  }

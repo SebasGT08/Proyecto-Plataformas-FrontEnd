@@ -12,8 +12,8 @@ import { DataSharingService } from 'src/app/services/data-sharing.service';
 })
 export class MantLugarComponent implements OnInit {
   listadolugar: Lugar[] | undefined;
-  
-  displayedColumns: string[] = ['lugar_id', 'estado', 'numeroLugar', 'tipoVehiculo', 'piso', 'acciones'];
+
+  displayedColumns: string[] = ['lugar_id', 'tipoVehiculo','piso', 'numeroLugar', 'estado', 'acciones'];
 
   constructor(
     private _snackBar: MatSnackBar,private sharedService: DataSharingService,private router: Router,
