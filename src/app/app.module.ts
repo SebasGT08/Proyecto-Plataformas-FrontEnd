@@ -54,6 +54,7 @@ import {MatSelectModule} from '@angular/material/select';
 
 import { EditClienteComponent } from './pages/cliente/edit-cliente/edit-cliente.component';
 import { DatePipe } from '@angular/common';
+import { EditUsuarioComponent } from './pages/usuario/edit-usuario/edit-usuario.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { DatePipe } from '@angular/common';
      InfoEmpresaComponent,
      InfoTarifaComponent,
      InfoLugarComponent,
-     EditClienteComponent
+     EditClienteComponent,
+     EditUsuarioComponent
   ],
   imports: [
     BrowserModule,

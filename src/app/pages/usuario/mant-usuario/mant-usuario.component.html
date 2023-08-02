@@ -1,3 +1,55 @@
 <app-menu></app-menu>
 <app-cabecera></app-cabecera>
-<p>mant-usuario works!</p>
+<div class="contenedor1">
+  <mat-toolbar color="primary" class="box1 center-title">
+    <h2>Mantenimiento de Usuarios</h2>
+  </mat-toolbar>
+</div>
+<br>
+<div *ngIf="listadoUsuarios?.length == 0">
+  <mat-toolbar color="warn" class="center-title">
+    <p>No existen usuarios</p>
+  </mat-toolbar>
+</div>
+
+<div *ngIf="listadoUsuarios && listadoUsuarios.length > 0">
+  <table mat-table [dataSource]="listadoUsuarios">
+
+    <!-- Columna Usuario ID -->
+    <ng-container matColumnDef="usuario_id">
+      <th mat-header-cell *matHeaderCellDef> Usuario ID </th>
+      <td mat-cell *matCellDef="let usuario"> {{ usuario.id }} </td>
+    </ng-container>
+
+    
+
+    <!-- Columna Usuario -->
+    <ng-container matColumnDef="usuario">
+      <th mat-header-cell *matHeaderCellDef> Usuario </th>
+      <td mat-cell *matCellDef="let usuario"> {{ usuario.usuario }} </td>
+    </ng-container>
+
+    <!-- Columna Contraseña -->
+    <ng-container matColumnDef="contrasenia">
+      <th mat-header-cell *matHeaderCellDef> Contraseña </th>
+      <td mat-cell *matCellDef="let usuario"> {{ usuario.contrasenia }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="cargo">
+        <th mat-header-cell *matHeaderCellDef> Cargo </th>
+        <td mat-cell *matCellDef="let usuario"> {{ usuario.cargo }} </td>
+      </ng-container>
+
+    <!-- Columna Acciones -->
+    <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let usuario">
+          <button mat-button color="warn" (click)="eliminar(usuario)">Eliminar</button>
+          <button mat-button color="basic" (click)="editar(usuario)">Editar</button>
+        </td>
+      </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

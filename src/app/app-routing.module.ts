@@ -31,6 +31,7 @@ import { MantTicketComponent } from './pages/ticket/mant-ticket/mant-ticket.comp
 import { HomeComponent } from './pages/home/home.component';
 import { EditEmpleadoComponent } from './pages/empleado/edit-empleado/edit-empleado.component';
 import { EditClienteComponent } from './pages/cliente/edit-cliente/edit-cliente.component';
+import { EditUsuarioComponent } from './pages/usuario/edit-usuario/edit-usuario.component';
 
 const routes: Routes = [
   //Login
@@ -39,6 +40,7 @@ const routes: Routes = [
   //Usuario
   {path: 'create-usuario',component: CreateUsuarioComponent,canActivate: [AuthGuardService]},
   {path: 'mant-usuario',component: MantUsuarioComponent,canActivate: [AuthGuardService]},
+  {path: 'edit-usuario',component: EditUsuarioComponent,canActivate: [AuthGuardService]},
   //Empleado
   {path: 'create-empleado',component: CreateEmpleadoComponent,canActivate: [AuthGuardService]},
   {path: 'mant-empleado',component: MantEmpleadoComponent,canActivate: [AuthGuardService]},

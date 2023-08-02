@@ -12,7 +12,8 @@ import { DataSharingService } from 'src/app/services/data-sharing.service';
 })
 export class EditEmpleadoComponent implements OnInit {
 
-  @Input() persona: Persona = { personaid: 0,cedula: '',nombre: '',telefono: '',direccion: '',correo: '',tipo: 'E'};
+  @Input() persona: Persona = { personaid: 0,cedula: '',
+  nombre: '',telefono: '',direccion: '',correo: '',tipo: 'E'};
 
   constructor(
     private _snackBar: MatSnackBar,

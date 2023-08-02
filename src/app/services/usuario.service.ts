@@ -12,16 +12,7 @@ export class UsuarioService {
   save(Usuario: Usuario) {
     return this.http.post<any>("http://localhost:8080/Proyecto-Plataformas/rs/Usuarios/registrar", Usuario);
   }
-  public registrarUsuarios(cargo: string, contrasenia: string, usuario: string,persona_id: string) {
-    const url = "http://localhost:8080/Proyecto-Plataformas/rs/Usuarios/registrar";
-    const usuarioData = {
-      cargo: cargo,
-      contrasenia: contrasenia,
-      usuario: usuario,
-      persona_id: persona_id
-    };
-    return this.http.post(url, usuarioData);
-  }
+  
 
   getAll(){
     return this.http.get<any>("http://localhost:8080/Proyecto-Plataformas/rs/Usuarios/listar")
