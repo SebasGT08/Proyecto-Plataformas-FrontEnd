@@ -12,15 +12,14 @@ import { TicketService } from './../../../services/ticket.service';
 })
 export class MantTicketComponent implements OnInit {
   listadoTicket: Ticket[] | undefined;
-  filteredListadoTicket: Ticket[] | undefined; // Lista filtrada para almacenar los tickets filtrados
+  listadoTicketsWS: any;
+  listadoTicketsOriginal: any;
+  fechaFiltro: Date | null = null;
 
-  displayedColumns: string[] = ['ticketid', 'estado', 'fecha','hora_entrada','hora_salida','usuario',
-  'tarifa','lugar','vehiculo'];
+  displayedColumns: string[] = ['ticketid', 'estado', 'fecha', 'hora_entrada', 'hora_salida'
+  , 'usuario', 'tarifa', 'lugar', 'vehiculo'];
 
   constructor(
-    private _snackBar: MatSnackBar,
-    private sharedService: DataSharingService,
-    private router: Router,
     private ticketService: TicketService
   ) {}
 
@@ -31,9 +30,8 @@ export class MantTicketComponent implements OnInit {
   getTickets(): void {
     this.ticketService.getAll().subscribe(
       (response: Ticket[]) => {
-        this.listadoTicket = response;
-        this.filteredListadoTicket = response; // Inicialmente, ambas listas son iguales
-        console.log('Listado de tickets:', this.listadoTicket);
+        this.listadoTicketsWS = response;
+        this.listadoTicketsOriginal = [...response];
       },
       (error) => {
         console.error('Error al obtener la lista de tickets:', error);
@@ -41,33 +39,12 @@ export class MantTicketComponent implements OnInit {
     );
   }
 
-  onDateChange(event: any): void {
-    // Extraer la fecha del evento
-    const selectedDate: Date = event.value;
-  
-    // Filtrar los tickets por fecha
-    if (this.listadoTicket) {
-      this.listadoTicket = this.listadoTicket.filter(ticket => {
-        // La propiedad 'fecha' podría ser undefined, así que verificamos antes de comparar
-        if (ticket.fecha) {
-          // Convertimos la fecha del ticket a un objeto Date para poder comparar
-          const ticketDate: Date = new Date(ticket.fecha);
-  
-          // Comparamos las fechas sin tener en cuenta las horas, minutos, segundos y milisegundos
-          return (
-            ticketDate.getFullYear() === selectedDate.getFullYear() &&
-            ticketDate.getMonth() === selectedDate.getMonth() &&
-            ticketDate.getDate() === selectedDate.getDate()
-          );
-        }
-        return false;
-      });
+  aplicarFiltro(): void {
+    if(this.fechaFiltro) {
+      const fechaSeleccionada = this.fechaFiltro.toLocaleDateString('fr-CA', { timeZone: 'UTC' });
+      this.listadoTicketsWS = this.listadoTicketsOriginal.filter((factura: any) => factura.fecha.startsWith(fechaSeleccionada));
+    } else {
+      this.listadoTicketsWS = [...this.listadoTicketsOriginal];
     }
   }
-  
-  
-  
-  
-  
-  
 }
