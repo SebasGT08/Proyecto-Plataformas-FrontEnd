@@ -14,14 +14,15 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class CreateUsuarioComponent {
  personas: Persona[] = [];
   selectedPersonaId: number = 0;
+  //persona_id='';
 
   usuarios: Usuario = {
-    persona_id: 0,
+    persona:{personaid:0},
     cargo: '',
     usuario: '',
     contrasenia: '',
   };
-  
+
   constructor(
     private _snackBar: MatSnackBar,
     private usuarioService: UsuarioService,
@@ -43,16 +44,21 @@ export class CreateUsuarioComponent {
       console.log('Formulario no válido');
       return;
     }
-  
-    // Antes de guardar el usuario, asignamos el persona_id seleccionado al usuario
-    this.usuarios.persona_id = this.selectedPersonaId;
-  
+
+    if(this.usuarios && this.usuarios.persona && this.selectedPersonaId != undefined) {
+      this.usuarios.persona.personaid = this.selectedPersonaId;
+  } else {
+     console.log('Formulario no valido');
+
+  }
+
+
     console.log('Datos del usuario antes de guardar:', this.usuarios); // Agregar esta línea
-  
+
     this.usuarioService.save(this.usuarios).subscribe(
       response => {
         console.log('Respuesta del servidor:', response); // Agregar esta línea
-  
+
         if (response.codigo) {
           this._snackBar.open(`Error al crear usuario: ${response.mensaje}`, 'Cerrar', {
             duration: 2000,
@@ -61,20 +67,20 @@ export class CreateUsuarioComponent {
           this._snackBar.open('Usuario creado con éxito', 'Cerrar', {
             duration: 2000,
           });
-  
-          this.usuarios = { persona_id: 0, cargo: '', usuario: '', contrasenia: '' };
-  
+
+          this.usuarios = { persona: {personaid:0}, cargo: '', usuario: '', contrasenia: '' };
+
           console.log('Datos del usuario después de guardar:', this.usuarios); // Agregar esta línea
         }
       },
       error => {
         console.log('Error al guardar usuario:', error); // Agregar esta línea
-  
+
         this._snackBar.open(`Error al crear usuario: ${error}`, 'Cerrar', {
           duration: 2000,
         });
       }
     );
   }
-  
+
 }
