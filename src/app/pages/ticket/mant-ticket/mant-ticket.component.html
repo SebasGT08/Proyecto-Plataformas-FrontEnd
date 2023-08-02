@@ -1,23 +1,32 @@
 <app-menu></app-menu>
 <app-cabecera></app-cabecera>
 <div class="contenedor1">
-  <mat-toolbar color="primary" class="box1 center-title">
-    <h2>Historial de Tickets</h2>
-  </mat-toolbar>
+<mat-toolbar color="primary"  class="box1 center-title">
+  <h2>Tickets</h2>
+</mat-toolbar>
 </div>
-<!-- Agrega la barra de búsqueda por fecha -->
-<div>
-  <mat-form-field>
-    <mat-label>Buscar por fecha</mat-label>
-    <input matInput [matDatepicker]="picker" (dateChange)="onDateChange($event)">
+<br>
+
+
+<div class="centrar-contenedor">
+  <mat-form-field class="centrar-elemento">
+    <input matInput [matDatepicker]="picker" placeholder="Filtrar por fecha" [(ngModel)]="fechaFiltro" (ngModelChange)="aplicarFiltro()">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 </div>
-<br>
-<div *ngIf="listadoTicket && listadoTicket.length && listadoTicket.length > 0">
-  <table mat-table [dataSource]="listadoTicket">
-    <!-- Columna Ticket ID -->
+
+<div *ngIf="listadoTicketsWS?.length == 0">
+
+  <mat-toolbar color="warn"  class="center-title">
+    <p>No existen facturas</p>
+  </mat-toolbar>
+
+</div>
+
+<div *ngIf="listadoTicketsWS?.length > 0">
+  <table mat-table [dataSource]="listadoTicketsWS">
+
     <ng-container matColumnDef="ticketid">
       <th mat-header-cell *matHeaderCellDef> Ticket ID </th>
       <td mat-cell *matCellDef="let ticket"> {{ ticket.ticketid }} </td>
@@ -50,25 +59,25 @@
     <!-- Columna Usuario -->
     <ng-container matColumnDef="usuario">
         <th mat-header-cell *matHeaderCellDef> Usuario </th>
-        <td mat-cell *matCellDef="let ticket"> {{ ticket.usuarioId }} </td>
+        <td mat-cell *matCellDef="let ticket"> {{ ticket.usuario.usuario }} </td>
       </ng-container>
   
       <!-- Columna Tarifa -->
       <ng-container matColumnDef="tarifa">
         <th mat-header-cell *matHeaderCellDef> Tarifa </th>
-        <td mat-cell *matCellDef="let ticket"> {{ ticket.tarifaid }} </td>
+        <td mat-cell *matCellDef="let ticket"> {{ ticket.tarifa.costoTarifa }} </td>
       </ng-container>
   
       <!-- Columna Lugar -->
       <ng-container matColumnDef="lugar">
         <th mat-header-cell *matHeaderCellDef> Lugar </th>
-        <td mat-cell *matCellDef="let ticket"> {{ ticket.lugarid }} </td>
+        <td mat-cell *matCellDef="let ticket"> {{ ticket.lugar.tipoVehiculo }} </td>
       </ng-container>
   
       <!-- Columna Vehículo -->
       <ng-container matColumnDef="vehiculo">
         <th mat-header-cell *matHeaderCellDef> Vehículo </th>
-        <td mat-cell *matCellDef="let ticket"> {{ ticket.vehiculoid }} </td>
+        <td mat-cell *matCellDef="let ticket"> {{ ticket.vehiculo.tipoVehiculo }} </td>
       </ng-container>
 
     <!-- Agrega aquí más columnas según las propiedades de tu modelo Ticket -->

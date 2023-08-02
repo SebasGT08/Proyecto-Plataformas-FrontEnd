@@ -44,30 +44,12 @@
         <div class="inputbox">
 
           <i class="fas fa-car-side"></i>
-          <mat-form-field appearance="outline">
-          <mat-select [(ngModel)]="lugar.tipoVehiculo" name="tipoVehiculo" required>
-            <mat-option value="Moto">Moto</mat-option>
-            <mat-option value="Carro">Carro</mat-option>
-            <mat-option value="Camion">Camión</mat-option>
-          </mat-select>
-        </mat-form-field>
+          <select [(ngModel)]="lugar.tipoVehiculo" name="tipoVehiculo" required>
+            <option value="Moto">Moto</option>
+            <option value="Carro">Carro</option>
+            <option value="Camion">Camión</option>
+          </select>
         </div>
-
-        <!-- Estado -->
-        <div class="inputbox1"><label for="">Estado</label>
-        </div>
-        <div class="inputbox">
-          <i class="fas fa-check-circle"></i>
-          <mat-form-field appearance="outline">
-          <mat-select [(ngModel)]="lugar.estado" name="estado" required>
-            <mat-option value="A">Activo</mat-option>
-            <mat-option value="I">Inactivo</mat-option>
-          </mat-select>
-        </mat-form-field>
-        </div>
-
-
-
 
         <!-- Botón Registrar -->
         <button mat-raised-button color="primary" class="full-width-button" type="submit" [disabled]="!registerForm.valid">Registrar</button>
