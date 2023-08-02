@@ -58,6 +58,8 @@ import { EditUsuarioComponent } from './pages/usuario/edit-usuario/edit-usuario.
 import { EditLugarComponent } from './pages/lugar/edit-lugar/edit-lugar.component';
 import { CreateLugarComponent } from './pages/lugar/create-lugar/create-lugar.component';
 import { MantLugarComponent } from './pages/lugar/mant-lugar/mant-lugar.component';
+import { MatDatepickerModule } from '@angular/material/datepicker'; // Asegúrate de importar MatDatepickerModule
+import { MatNativeDateModule } from '@angular/material/core'; // Importa MatNativeDateModule
 
 @NgModule({
   declarations: [
@@ -85,7 +87,9 @@ import { MantLugarComponent } from './pages/lugar/mant-lugar/mant-lugar.componen
      EditUsuarioComponent,
      EditLugarComponent,
      CreateLugarComponent,
-     MantLugarComponent
+     
+     MantLugarComponent,
+     
   ],
   imports: [
     BrowserModule,
@@ -95,7 +99,7 @@ import { MantLugarComponent } from './pages/lugar/mant-lugar/mant-lugar.componen
     MatToolbarModule,MatMenuModule,MatButtonModule,
     MatCardModule,MatInputModule,MatFormFieldModule,MatIconModule,HttpClientModule, MatSnackBarModule,
     ReactiveFormsModule,
-    MatTableModule,FlexLayoutModule,MatAutocompleteModule,MatSelectModule
+    MatTableModule,FlexLayoutModule,MatAutocompleteModule,MatSelectModule,MatDatepickerModule,MatNativeDateModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
