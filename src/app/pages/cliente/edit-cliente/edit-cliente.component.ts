@@ -42,11 +42,11 @@ export class EditClienteComponent implements OnInit {
             duration: 2000,
           });
         } else {
-          this._snackBar.open('Empleado actualizado con éxito', 'Cerrar', {
+          this._snackBar.open('Cliente actualizado con éxito', 'Cerrar', {
             duration: 2000,
           });
-          this.persona = { cedula: '',nombre: '',telefono: '',direccion: '',correo: '',tipo: 'E' };
-          this.router.navigate(['mant-empleado']);
+          this.persona = { cedula: '',nombre: '',telefono: '',direccion: '',correo: '',tipo: 'C' };
+          this.router.navigate(['mant-cliente']);
         }
       },
       error => {
