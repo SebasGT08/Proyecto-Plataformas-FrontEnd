@@ -38,7 +38,7 @@ export class EditClienteComponent implements OnInit {
     this.personaService.actualizar(this.persona).subscribe(
       response => {
         if (response.codigo) { // si response.codigo existe, hay un error
-          this._snackBar.open(`Error al actualizar empleado: ${response.mensaje}`, 'Cerrar', {
+          this._snackBar.open(`Error al actualizar cliente: ${response.mensaje}`, 'Cerrar', {
             duration: 2000,
           });
         } else {
@@ -50,7 +50,7 @@ export class EditClienteComponent implements OnInit {
         }
       },
       error => {
-        this._snackBar.open(`Error al actualizar empleado: ${error}`, 'Cerrar', {
+        this._snackBar.open(` ${error.error.mensaje}`, 'Cerrar', {
           duration: 2000,
         });
       }

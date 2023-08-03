@@ -38,21 +38,23 @@ export class EditEmpleadoComponent implements OnInit {
 
     this.personaService.actualizar(this.persona).subscribe(
       response => {
+        //console.log(response);
+
         if (response.codigo) { // si response.codigo existe, hay un error
           this._snackBar.open(`Error al actualizar empleado: ${response.mensaje}`, 'Cerrar', {
-            duration: 2000,
+            duration: 5000,
           });
         } else {
           this._snackBar.open('Empleado actualizado con éxito', 'Cerrar', {
-            duration: 2000,
+            duration: 5000,
           });
           this.persona = { cedula: '',nombre: '',telefono: '',direccion: '',correo: '',tipo: 'E' };
           this.router.navigate(['mant-empleado']);
         }
       },
       error => {
-        this._snackBar.open(`Error al actualizar empleado: ${error}`, 'Cerrar', {
-          duration: 2000,
+        this._snackBar.open(` ${error.error.mensaje}`, 'Cerrar', {
+          duration: 5000,
         });
       }
     );
